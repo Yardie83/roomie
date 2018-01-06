@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+config.env
+.gitignore
+.idea/dataSources.local.xml
+.idea/workspace.xml
