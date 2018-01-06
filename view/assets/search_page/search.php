@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
 
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>search_page</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/search_page/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+    <link rel="stylesheet" href="assets/search_page/assets/css/styles.css">
 
-<body>
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center" style="font-family:'Source Sans Pro', sans-serif;margin-bottom:50px;margin-top:50px;">Search a room</h1>
@@ -48,8 +43,5 @@
             </form>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    <script src="assets/search_page/assets/js/jquery.min.js"></script>
+    <script src="assets/search_page/assets/bootstrap/js/bootstrap.min.js"></script>

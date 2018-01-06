@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>registration</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+    <link rel="stylesheet" href="assets/registration/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/registration/assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/registration/assets/css/styles.css">
 
-<body>
     <div class="register-photo">
         <div class="form-container">
             <form method="post">
@@ -29,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Gender <span class="caret"></span></button>
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Gender <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="#">Male </a></li>
                             <li role="presentation"><a href="#">Female </a></li>
@@ -48,8 +40,5 @@
             <div class="image-holder"></div>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    <script src="assets/registration/assets/js/jquery.min.js"></script>
+    <script src="assets/registration/assets/bootstrap/js/bootstrap.min.js"></script>

@@ -8,6 +8,7 @@
 require_once("config/Autoloader.php");
 
 use controller\HomepageController;
+use controller\RegisterController;
 use router\Router;
 use controller\CustomerController;
 use controller\AgentController;
@@ -50,7 +51,7 @@ Router::route("GET", "/login", function () {
 });
 
 Router::route("GET", "/register", function () {
-    AgentController::registerView();
+    RegisterController::registerView();
 });
 
 Router::route("POST", "/register", function () {
