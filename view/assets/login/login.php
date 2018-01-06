@@ -1,5 +1,4 @@
     <title>loginPage</title>
-    <link rel="stylesheet" href="assets/login/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/login/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/login/assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/login/assets/css/styles.css">

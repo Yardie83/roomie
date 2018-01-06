@@ -1,5 +1,4 @@
     <title>registration</title>
-    <link rel="stylesheet" href="assets/registration/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/registration/assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="assets/registration/assets/css/styles.css">
 
@@ -36,7 +35,8 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                </div><a href="#" class="already">You already have an account? Login here.</a></form>
+                </div>
+            </form>
             <div class="image-holder"></div>
         </div>
     </div>

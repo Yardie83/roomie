@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/header/header_loggedOut/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/header/header_loggedOut/assets/css/Header-Blue.css">
     <link rel="stylesheet" href="assets/header/header_loggedOut/assets/css/styles.css">
 
 </head>
