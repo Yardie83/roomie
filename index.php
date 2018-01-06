@@ -16,6 +16,7 @@ use controller\ErrorController;
 use controller\AgentPasswordResetController;
 use controller\EmailController;
 use controller\PDFController;
+use controller\SearchController;
 use service\ServiceEndpoint;
 use http\HTTPException;
 use http\HTTPHeader;
@@ -35,6 +36,10 @@ Router::route("GET", "/", function () {
 });
 
 Router::route("POST", "/", function () {
+});
+
+Router::route("GET", "/search", function () {
+    SearchController::show();
 });
 
 Router::route("GET", "/login", function () {
