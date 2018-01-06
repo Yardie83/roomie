@@ -15,7 +15,7 @@ class SearchController
 {
     public static function show()
     {
-        $contentView = new TemplateView("view/search_page/search.php");
+        $contentView = new TemplateView("view/assets/search_page/search.php");
         LayoutRendering::basicLayout($contentView);
     }
 }
