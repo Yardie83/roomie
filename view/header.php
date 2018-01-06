@@ -20,7 +20,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav"></ul>
-                    <p class="navbar-text navbar-right"><a class="navbar-link login" href="#">Log In</a> <a class="btn btn-default action-button" role="button" href="#">Sign Up</a></p>
+                    <p class="navbar-text navbar-right"><a class="navbar-link login" href="<?php echo $GLOBALS["ROOT_URL"]; ?>/logout">Log In</a> <a class="btn btn-default action-button" role="button" href="#">Sign Up</a></p>
                     <ul class="nav navbar-nav">
                         <li role="presentation"><a href="#">Search </a></li>
                     </ul>
