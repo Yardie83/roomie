@@ -12,12 +12,16 @@ namespace view;
 class LayoutRendering
 {
 
-    public static function basicLayout(TemplateView $contentView){
+    public static function basicLayout(TemplateView $contentView, $isLoggedIn = false) {
         $view = new TemplateView("layout.php");
-        $view->header = (new TemplateView("header.php"))->render();
+        if ($isLoggedIn) {
+            $view->header = (new TemplateView("assets/header/header_loggedin/header_loggedin.php"))->render();
+        } else {
+            $view->header = (new TemplateView("assets/header/basic/header.php"))->render();
+        }
         $view->content = $contentView->render();
         $view->footer = (new TemplateView("footer.php"))->render();
         echo $view->render();
-    }
 
+    }
 }

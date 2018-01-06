@@ -18,20 +18,20 @@ class CustomerController
 {
     public static function create(){
         $contentView = new TemplateView("customerEdit.php");
-        LayoutRendering::basicLayout($contentView);
+        LayoutRendering::basicLayout($contentView, true);
     }
 
     public static function readAll(){
         $contentView = new TemplateView("customers.php");
         $contentView->customers = (new CustomerServiceImpl())->findAllCustomer();
-        LayoutRendering::basicLayout($contentView);
+        LayoutRendering::basicLayout($contentView, true);
     }
 
     public static function edit(){
         $id = $_GET["id"];
         $contentView = new TemplateView("customerEdit.php");
         $contentView->customer = (new CustomerServiceImpl())->readCustomer($id);
-        LayoutRendering::basicLayout($contentView);
+        LayoutRendering::basicLayout($contentView, true);
     }
 
     public static function update(){

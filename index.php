@@ -33,6 +33,7 @@ $authFunction = function () {
     return false;
 };
 
+// Home path
 Router::route("GET", "/", function () {
     HomepageController::show();
 });
@@ -40,16 +41,27 @@ Router::route("GET", "/", function () {
 Router::route("POST", "/", function () {
 });
 
+// Search path
+
 Router::route("GET", "/search", function () {
     SearchController::show();
 });
 
+
+// Login path
 Router::route("GET", "/login", function () {
     UserController::loginView();
 
     //AgentController::loginView();
 });
 
+Router::route("POST", "/login", function () {
+    AuthController::login();
+    Router::redirect("/agent");
+});
+
+
+// Register path
 Router::route("GET", "/register", function () {
     RegisterController::registerView();
 });
@@ -59,16 +71,16 @@ Router::route("POST", "/register", function () {
         Router::redirect("/logout");
 });
 
-Router::route("POST", "/login", function () {
-    AuthController::login();
-    Router::redirect("/agent");
-});
+
+// Logout path
 
 Router::route("GET", "/logout", function () {
     AuthController::logout();
     Router::redirect("/login");
 });
 
+
+// Password request path
 Router::route("POST", "/password/request", function () {
     AgentPasswordResetController::resetEmail();
     Router::redirect("/login");
@@ -78,6 +90,8 @@ Router::route("GET", "/password/request", function () {
     AgentPasswordResetController::requestView();
 });
 
+
+// Password reset path
 Router::route("POST", "/password/reset", function () {
     AgentPasswordResetController::reset();
     Router::redirect("/login");
@@ -87,6 +101,8 @@ Router::route("GET", "/password/reset", function () {
     AgentPasswordResetController::resetView();
 });
 
+
+// Agent paths
 Router::route_auth("GET", "/agent", $authFunction, function () {
     CustomerController::readAll();
 });
@@ -100,6 +116,8 @@ Router::route_auth("POST", "/agent/edit", $authFunction, function () {
         Router::redirect("/logout");
 });
 
+
+// Customer paths
 Router::route_auth("GET", "/customer/create", $authFunction, function () {
     CustomerController::create();
 });
@@ -127,6 +145,12 @@ Router::route_auth("GET", "/customer/pdf", $authFunction, function () {
     PDFController::generatePDFCustomers();
 });
 
+
+/*
+ *
+ * Service API
+ *
+ */
 $authAPIBasicFunction = function () {
     if (ServiceEndpoint::authenticateBasic())
         return true;
@@ -169,6 +193,12 @@ Router::route_auth("DELETE", "/api/customer/{id}", $authAPITokenFunction, functi
     ServiceEndpoint::deleteCustomer($id);
 });
 
+
+/*
+ *
+ * Web site entry point
+ *
+ */
 try {
     HTTPHeader::setHeader("Access-Control-Allow-Origin: *");
     HTTPHeader::setHeader("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS, HEAD");
