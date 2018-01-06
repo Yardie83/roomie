@@ -14,7 +14,7 @@
                 <input class="form-control" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                <button class="btn btn-primary btn-block" type="submit">Login</button>
             </div><a href="#" class="forgot">Forgot your password?</a></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
