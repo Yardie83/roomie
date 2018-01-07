@@ -28,7 +28,7 @@ class ListingServiceImpl implements ListingService
     {
         if(AuthServiceImpl::getInstance()->verifyAuth()) {
             $listingDAO = new ListingDAO();
-            $listing->setAgentId(AuthServiceImpl::getInstance()->getCurrentAgentId());
+            $listing->setAgentId(AuthServiceImpl::getInstance()->getCurrentUserId());
             return $listingDAO->create($listing);
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
@@ -96,7 +96,7 @@ class ListingServiceImpl implements ListingService
     {
         if(AuthServiceImpl::getInstance()->verifyAuth()){
             $listingDAO = new ListingDAO();
-            return $listingDAO->findByUserID(AuthServiceImpl::getInstance()->getCurrentAgentId());
+            return $listingDAO->findByUserID(AuthServiceImpl::getInstance()->getCurrentUserId());
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
 

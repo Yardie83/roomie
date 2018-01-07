@@ -11,14 +11,31 @@ namespace domain;
 
 class User
 {
-    private $id;
-    private $userName;
-    private $password;
-    private $email;
-    private $isAdmin;
+    /**
+     * @AttributeType int
+     */
+    protected $id;
+    /**
+     * @AttributeType String
+     */
+    protected $userName;
+    /**
+     * @AttributeType String
+     */
+    protected $password;
+    /**
+     * @AttributeType String
+     */
+    protected $email;
+    /**
+     * @AttributeType Bool
+     */
+    protected $isAdmin;
 
     /**
-     * @return mixed
+     * @access public
+     * @return int
+     * @ReturnType int
      */
     public function getId()
     {
@@ -26,7 +43,9 @@ class User
     }
 
     /**
-     * @return mixed
+     * @access public
+     * @return String
+     * @ReturnType String
      */
     public function getUserName()
     {
@@ -34,7 +53,11 @@ class User
     }
 
     /**
-     * @param mixed $userName
+     * @access public
+     * @param String name
+     * @return void
+     * @ParamType name String
+     * @ReturnType void
      */
     public function setUserName($userName)
     {
@@ -42,7 +65,9 @@ class User
     }
 
     /**
-     * @return mixed
+     * @access public
+     * @return String
+     * @ReturnType String
      */
     public function getPassword()
     {
@@ -50,7 +75,11 @@ class User
     }
 
     /**
-     * @param mixed $password
+     * @access public
+     * @param String password
+     * @return void
+     * @ParamType password String
+     * @ReturnType void
      */
     public function setPassword($password)
     {
@@ -58,7 +87,9 @@ class User
     }
 
     /**
-     * @return mixed
+     * @access public
+     * @return String
+     * @ReturnType String
      */
     public function getEmail()
     {
@@ -66,7 +97,11 @@ class User
     }
 
     /**
-     * @param mixed $email
+     * @access public
+     * @param String email
+     * @return void
+     * @ParamType email String
+     * @ReturnType void
      */
     public function setEmail($email)
     {

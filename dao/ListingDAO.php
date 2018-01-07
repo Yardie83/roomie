@@ -69,8 +69,8 @@ class ListingDAO extends BasicDAO
      */
     public function update(Listing $listing) {
         $stmt = $this->pdoInstance->prepare('
-            UPDATE ListingAppartment SET 
-            RegisteredUsersID = :RegisteredUserID,
+            UPDATE "listingApartment" SET 
+            "userID" = :userID,
             street = :street, 
             plz = :plz, 
             city = :city, 
@@ -86,7 +86,7 @@ class ListingDAO extends BasicDAO
             image2 = :image2, 
             image3 = :image3
             WHERE id = :id');
-        $stmt->bindValue(':RegisteredUserID', $listing->getRegisteredUserID());
+        $stmt->bindValue(':userID', $listing->getUserID());
         $stmt->bindValue(':street', $listing->getStreet());
         $stmt->bindValue(':plz', $listing->getPlz());
         $stmt->bindValue(':city', $listing->getCity());
@@ -112,7 +112,7 @@ class ListingDAO extends BasicDAO
      */
     public function delete(Listing $listing) {
         $stmt = $this->pdoInstance->prepare('
-            DELETE FROM ListingAppartment
+            DELETE FROM "listingApartment"
             WHERE id = :id
         ');
         $stmt->bindValue(':id', $listing->getId());
@@ -128,13 +128,9 @@ class ListingDAO extends BasicDAO
      */
     public function findByUserID($userId) {
         $stmt = $this->pdoInstance->prepare('
-            SELECT * FROM ListingAppartment WHERE RegisteredUsersID = :Id ORDER BY id;');
+            SELECT * FROM "listingApartment" WHERE "userID" = :Id ORDER BY id;');
         $stmt->bindValue(':Id', $userId);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Listing");
     }
-
-
-
-
 }

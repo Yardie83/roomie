@@ -45,15 +45,15 @@ class Listing
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getRegisteredUserID()
+    public function getUserID()
     {
         return $this->registeredUserID;
     }
 
     /**
-     * @param mixed $registeredUserID
+     * @param int $registeredUserID
      */
     public function setRegisteredUserID($registeredUserID)
     {

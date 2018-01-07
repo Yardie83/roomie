@@ -26,7 +26,7 @@ class CustomerServiceImpl implements CustomerService
     public function createCustomer(Customer $customer) {
         if(AuthServiceImpl::getInstance()->verifyAuth()) {
             $customerDAO = new CustomerDAO();
-            $customer->setAgentId(AuthServiceImpl::getInstance()->getCurrentAgentId());
+            $customer->setAgentId(AuthServiceImpl::getInstance()->getCurrentUserId());
             return $customerDAO->create($customer);
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
@@ -87,7 +87,7 @@ class CustomerServiceImpl implements CustomerService
     public function findAllCustomer() {
         if(AuthServiceImpl::getInstance()->verifyAuth()){
             $customerDAO = new CustomerDAO();
-            return $customerDAO->findByAgent(AuthServiceImpl::getInstance()->getCurrentAgentId());
+            return $customerDAO->findByAgent(AuthServiceImpl::getInstance()->getCurrentUserId());
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
     }

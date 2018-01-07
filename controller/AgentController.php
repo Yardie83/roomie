@@ -45,7 +45,7 @@ class AgentController
         $agent->setPassword($_POST["password"]);
         $agentValidator = new AgentValidator($agent);
         if($agentValidator->isValid()){
-            if(AuthServiceImpl::getInstance()->editAgent($agent->getName(),$agent->getEmail(), $agent->getPassword())){
+            if(AuthServiceImpl::getInstance()->editUser($agent->getName(),$agent->getEmail(), $agent->getPassword())){
                 return true;
             }else{
                 $agentValidator->setEmailError("Email already exists");

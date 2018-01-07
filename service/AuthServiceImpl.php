@@ -8,7 +8,8 @@
 
 namespace service;
 
-use domain\Agent;
+use dao\UserDAO;
+use domain\User;
 use domain\AuthToken;
 use dao\AgentDAO;
 use http\HTTPException;
@@ -27,7 +28,7 @@ class AuthServiceImpl implements AuthService {
     /**
      * @AttributeType int
      */
-    private $currentAgentId;
+    private $currentUserId;
 
     /**
      * @access public
@@ -58,7 +59,7 @@ class AuthServiceImpl implements AuthService {
      * @ReturnType boolean
      */
     public function verifyAuth() {
-        if(isset($this->currentAgentId))
+        if(isset($this->currentUserId))
             return true;
         return false;
     }
@@ -68,9 +69,9 @@ class AuthServiceImpl implements AuthService {
      * @return int
      * @ReturnType int
      */
-    public function getCurrentAgentId()
+    public function getCurrentUserId()
     {
-        return $this->currentAgentId;
+        return $this->currentUserId;
     }
 
     /**
@@ -83,15 +84,15 @@ class AuthServiceImpl implements AuthService {
      * @ReturnType boolean
      */
     public function verifyAgent($email, $password) {
-        $agentDAO = new AgentDAO();
-        $agent = $agentDAO->findByEmail($email);
-        if (isset($agent)) {
-            if (password_verify($password, $agent->getPassword())) {
-                if (password_needs_rehash($agent->getPassword(), PASSWORD_DEFAULT)) {
-                    $agent->setPassword(password_hash($password, PASSWORD_DEFAULT));
-                    $agentDAO->update($agent);
+        $userDAO = new UserDAO();
+        $user = $userDAO->findByEmail($email);
+        if (isset($user)) {
+            if (password_verify($password, $user->getPassword())) {
+                if (password_needs_rehash($user->getPassword(), PASSWORD_DEFAULT)) {
+                    $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+                    $userDAO->update($user);
                 }
-                $this->currentAgentId = $agent->getId();
+                $this->currentUserId = $user->getId();
                 return true;
             }
         }
@@ -107,7 +108,7 @@ class AuthServiceImpl implements AuthService {
     public function readAgent() {
         if($this->verifyAuth()) {
             $agentDAO = new AgentDAO();
-            return $agentDAO->read($this->currentAgentId);
+            return $agentDAO->read($this->currentUserId);
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
     }
@@ -123,26 +124,26 @@ class AuthServiceImpl implements AuthService {
      * @ParamType password String
      * @ReturnType boolean
      */
-    public function editAgent($name, $email, $password) {
-        $agent = new Agent();
-        $agent->setName($name);
-        $agent->setEmail($email);
-        $agent->setPassword(password_hash($password, PASSWORD_DEFAULT));
-        $agentDAO = new AgentDAO();
+    public function editUser($name, $email, $password) {
+        $user = new User();
+        $user->setuserName($name);
+        $user->setEmail($email);
+        $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+        $userDAO = new UserDAO();
         if($this->verifyAuth()) {
-            $agent->setId($this->currentAgentId);
-            if($agentDAO->read($this->currentAgentId)->getEmail() !== $agent->getEmail()) {
-                if (!is_null($agentDAO->findByEmail($email))) {
+            //$user->set($this->currentUserId);
+            if($userDAO->read($this->currentUserId)->getEmail() !== $email) {
+                if (!is_null($userDAO->findByEmail($email))) {
                     return false;
                 }
             }
-            $agentDAO->update($agent);
+            $userDAO->update($user);
             return true;
         }else{
-            if(!is_null($agentDAO->findByEmail($email))){
+            if(!is_null($userDAO->findByEmail($email))){
                 return false;
             }
-            $agentDAO->create($agent);
+            $userDAO->create($user);
             return true;
         }
     }
@@ -161,7 +162,7 @@ class AuthServiceImpl implements AuthService {
         if (!empty($authToken)) {
             if(time()<=(new \DateTime($authToken->getExpiration()))->getTimestamp()){
                 if (hash_equals(hash('sha384', hex2bin($tokenArray[1])), $authToken->getValidator())) {
-                    $this->currentAgentId = $authToken->getAgentid();
+                    $this->currentUserId = $authToken->getAgentid();
                     if($authToken->getType()===self::RESET_TOKEN){
                         $authTokenDAO->delete($authToken);
                     }
@@ -192,7 +193,7 @@ class AuthServiceImpl implements AuthService {
         $token->setSelector(bin2hex(random_bytes(5)));
         if($type===self::AGENT_TOKEN) {
             $token->setType(self::AGENT_TOKEN);
-            $token->setAgentid($this->currentAgentId);
+            $token->setAgentid($this->currentUserId);
             $timestamp = (new \DateTime('now'))->modify('+30 days');
         }
         elseif(isset($email)){
