@@ -3,7 +3,6 @@
 
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -15,10 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/header/basic/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/header/basic/assets/css/styles.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
 
-</head>
-
-<body>
 <div>
     <nav class="navbar navbar-default navigation-clean-search" style="height:66px;">
         <div class="container">

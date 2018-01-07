@@ -1,36 +1,34 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: andreas.martin
- * Date: 08.10.2017
- * Time: 21:48
+ * User: Hermann Grieder
+ * Date: 07.01.2018
+ * Time: 01:08
  */
 
 namespace controller;
 
-use domain\Customer;
-use validator\CustomerValidator;
-use service\CustomerServiceImpl;
-use view\TemplateView;
-use view\LayoutRendering;
 
-class CustomerController
+use view\LayoutRendering;
+use view\TemplateView;
+
+class ListingController
 {
     public static function create(){
-        $contentView = new TemplateView("customerEdit.php");
-        LayoutRendering::basicLayout($contentView );
+        $contentView = new TemplateView("assets/createAd/createAd.php");
+        LayoutRendering::basicLayout($contentView);
     }
 
     public static function readAll(){
         $contentView = new TemplateView("customers.php");
         $contentView->customers = (new CustomerServiceImpl())->findAllCustomer();
-        LayoutRendering::basicLayout($contentView );
+        LayoutRendering::basicLayout($contentView);
     }
 
     public static function edit(){
-        $id = $_GET["id"];
-        $contentView = new TemplateView("customerEdit.php");
-        $contentView->customer = (new CustomerServiceImpl())->readCustomer($id);
+        //$id = $_GET["id"];
+        $contentView = new TemplateView("assets/createAd/createAd.php");
+        //$contentView->customer = (new CustomerServiceImpl())->readCustomer($id);
         LayoutRendering::basicLayout($contentView);
     }
 
@@ -62,5 +60,4 @@ class CustomerController
         $id = $_GET["id"];
         (new CustomerServiceImpl())->deleteCustomer($id);
     }
-
 }

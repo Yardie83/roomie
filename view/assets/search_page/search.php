@@ -42,5 +42,3 @@
             </form>
         </div>
     </div>
-    <script src="assets/search_page/assets/js/jquery.min.js"></script>
-    <script src="assets/search_page/assets/bootstrap/js/bootstrap.min.js"></script>

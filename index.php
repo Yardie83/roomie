@@ -8,6 +8,7 @@
 require_once("config/Autoloader.php");
 
 use controller\HomepageController;
+use controller\ListingController;
 use controller\RegisterController;
 use router\Router;
 use controller\CustomerController;
@@ -35,6 +36,7 @@ $authFunction = function () {
 
 // Home path
 Router::route("GET", "/", function () {
+
     HomepageController::show();
 });
 
@@ -76,7 +78,7 @@ Router::route("POST", "/register", function () {
 
 Router::route("GET", "/logout", function () {
     AuthController::logout();
-    Router::redirect("/login");
+    Router::redirect("/");
 });
 
 
@@ -116,6 +118,30 @@ Router::route_auth("POST", "/agent/edit", $authFunction, function () {
         Router::redirect("/logout");
 });
 
+// Listing CRUD & Email
+Router::route_auth("GET", "/listing/create", $authFunction, function () {
+    ListingController::create();
+});
+
+Router::route_auth("GET", "/listing/edit", $authFunction, function () {
+    ListingController::edit();
+});
+
+Router::route_auth("GET", "/listing/delete", $authFunction, function () {
+    ListingController::delete();
+    Router::redirect("/");
+});
+
+Router::route_auth("POST", "/listing/update", $authFunction, function () {
+    if(ListingController::update())
+        Router::redirect("/");
+});
+
+Router::route_auth("GET", "/listing/email", $authFunction, function () {
+    EmailController::sendMeMyCustomers();
+    Router::redirect("/");
+});
+
 
 // Customer paths
 Router::route_auth("GET", "/customer/create", $authFunction, function () {
@@ -144,55 +170,6 @@ Router::route_auth("GET", "/customer/email", $authFunction, function () {
 Router::route_auth("GET", "/customer/pdf", $authFunction, function () {
     PDFController::generatePDFCustomers();
 });
-
-
-/*
- *
- * Service API
- *
- */
-$authAPIBasicFunction = function () {
-    if (ServiceEndpoint::authenticateBasic())
-        return true;
-    Router::errorHeader();
-    return false;
-};
-
-Router::route_auth("GET", "/api/token", $authAPIBasicFunction, function () {
-    ServiceEndpoint::loginBasicToken();
-});
-
-$authAPITokenFunction = function () {
-    if (ServiceEndpoint::authenticateToken())
-        return true;
-    Router::errorHeader();
-    return false;
-};
-
-Router::route_auth("HEAD", "/api/token", $authAPITokenFunction, function () {
-    ServiceEndpoint::validateToken();
-});
-
-Router::route_auth("GET", "/api/customer", $authAPITokenFunction, function () {
-    ServiceEndpoint::findAllCustomer();
-});
-
-Router::route_auth("GET", "/api/customer/{id}", $authAPITokenFunction, function ($id) {
-    ServiceEndpoint::readCustomer($id);
-});
-
-Router::route_auth("PUT", "/api/customer/{id}", $authAPITokenFunction, function ($id) {
-    ServiceEndpoint::updateCustomer($id);
-});
-
-Router::route_auth("POST", "/api/customer", $authAPITokenFunction, function () {
-    ServiceEndpoint::createCustomer();
-});
-
-Router::route_auth("DELETE", "/api/customer/{id}", $authAPITokenFunction, function ($id) {
-    ServiceEndpoint::deleteCustomer($id);
-});
-
 
 /*
  *

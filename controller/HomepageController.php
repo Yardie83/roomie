@@ -15,7 +15,7 @@ class HomepageController
 {
     public static function show()
     {
-        $contentView = new TemplateView("view/assets/landing/homepage.php");
+        $contentView = new TemplateView("view/assets/landing/landing.php");
         LayoutRendering::basicLayout($contentView);
     }
 }

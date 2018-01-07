@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
+    <link rel="stylesheet" href="assets/createAd/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/createAd/assets/css/styles.css">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>createAd</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
 
-<body>
     <div class="container">
         <div class="intro">
             <h2 class="text-center">Ad Title</h2>
@@ -19,14 +11,10 @@
             <input type="text" required="" maxlength="2" inputmode="numeric">
             <p class="text-left" style="margin-bottom:8px;">Monthly price:</p>
             <input type="text" required="" maxlength="8" inputmode="numeric">
-            <p class="text-left" style="margin-bottom:8px;">Where is the apartment (city): </p>
+            <p class="text-left" style="margin-bottom:8px;">City </p>
             <input type="text" required="">
-            <p class="text-left">Tell us your mail or phone number through which you can be contacted (contact): </p>
+            <p class="text-left">Email address </p>
             <input type="text" required="">
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+<
