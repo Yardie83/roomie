@@ -13,7 +13,6 @@ use domain\Listing;
 
 class ListingDAO extends BasicDAO
 {
-
     /**
      * @access public
      * @param Listing $listing
@@ -98,9 +97,9 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':moveindate', $listing->getMoveInDate());
         $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
         $stmt->bindValue(':description', $listing->getDescription());
-        $stmt->bindValue(':image1', $listing->getImage1());
-        $stmt->bindValue(':image2', $listing->getImage2());
-        $stmt->bindValue(':image3', $listing->getImage3());
+//        $stmt->bindValue(':image1', $listing->getImage1());
+//        $stmt->bindValue(':image2', $listing->getImage2());
+//        $stmt->bindValue(':image3', $listing->getImage3());
         $stmt->execute();
         return $this->read($listing->getId());
     }

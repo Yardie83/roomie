@@ -10,10 +10,10 @@ use view\TemplateView;
         <?php
         foreach ($this->listings as $listing): ?>
             <div class="row">
-                <div class="col-md-6" style="width:320px;margin-left:0px;"><img
-                            src=<?php echo TemplateView::noHTML($listing->image1()); ?> class="center-block"
-                            style="height:137px;width:137px;"></div>
-                <div class="col-md-6">
+<!--                <div class="col-md-6" style="width:320px;margin-left:0px;"><img-->
+<!--                            src=--><?php //echo TemplateView::noHTML($listing->image1()); ?><!-- class="center-block"-->
+<!--                            style="height:137px;width:137px;"></div>-->
+<!--                <div class="col-md-6">-->
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
