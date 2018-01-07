@@ -107,6 +107,7 @@ Router::route("GET", "/password/reset", function () {
 
 // Agent paths
 Router::route_auth("GET", "/agent", $authFunction, function () {
+    ListingController::readAll();
     CustomerController::readAll();
 });
 
