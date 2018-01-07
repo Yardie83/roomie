@@ -22,6 +22,7 @@ class Listing
     private $squareMeters;
     private $publishedDate;
     private $moveInDate;
+    private $moveOutDate;
     private $description;
     private $image1;
     private $image2;
@@ -193,6 +194,22 @@ class Listing
     public function setMoveInDate($moveInDate)
     {
         $this->moveInDate = $moveInDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMoveOutDate()
+    {
+        return $this->moveOutDate;
+    }
+
+    /**
+     * @param mixed $moveOutDate
+     */
+    public function setMoveOutDate($moveOutDate)
+    {
+        $this->moveOutDate = $moveOutDate;
     }
 
     /**
