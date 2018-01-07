@@ -29,6 +29,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':plz', $listing->getPlz());
         $stmt->bindValue(':canton', $listing->getCanton());
         $stmt->bindValue(':numberofrooms', $listing->getNumberOfRooms());
+        $stmt->bindValue(':price', $listing->getPrice());
         $stmt->bindValue(':squaremeters', $listing->getSquareMeters());
         $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
         $stmt->bindValue(':moveindate', $listing->getMoveInDate());
