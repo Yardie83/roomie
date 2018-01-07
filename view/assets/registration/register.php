@@ -4,10 +4,10 @@
 
     <div class="register-photo">
         <div class="form-container">
-            <form method="post">
+            <form action="<?php echo $GLOBALS["ROOT_URL"]; ?><?php echo "/register"; ?>" method="post">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="Username">
+                    <input class="form-control" type="text" name="name" placeholder="Username">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="email" name="email" placeholder="Email">

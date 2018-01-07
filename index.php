@@ -69,8 +69,10 @@ Router::route("GET", "/register", function () {
 });
 
 Router::route("POST", "/register", function () {
-    if(AgentController::register())
-        Router::redirect("/logout");
+    if (AgentController::register()){
+        AuthController::login();
+        Router::redirect("/agent");
+    }
 });
 
 
@@ -114,7 +116,7 @@ Router::route_auth("GET", "/agent/edit", $authFunction, function () {
 });
 
 Router::route_auth("POST", "/agent/edit", $authFunction, function () {
-    if(AgentController::update())
+    if (AgentController::update())
         Router::redirect("/logout");
 });
 
@@ -133,7 +135,7 @@ Router::route_auth("GET", "/listing/delete", $authFunction, function () {
 });
 
 Router::route_auth("POST", "/listing/update", $authFunction, function () {
-    if(ListingController::update())
+    if (ListingController::update())
         Router::redirect("/");
 });
 
@@ -158,7 +160,7 @@ Router::route_auth("GET", "/customer/delete", $authFunction, function () {
 });
 
 Router::route_auth("POST", "/customer/update", $authFunction, function () {
-    if(CustomerController::update())
+    if (CustomerController::update())
         Router::redirect("/");
 });
 
@@ -180,7 +182,7 @@ try {
     HTTPHeader::setHeader("Access-Control-Allow-Origin: *");
     HTTPHeader::setHeader("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS, HEAD");
     HTTPHeader::setHeader("Access-Control-Allow-Headers: Authorization, Location, Origin, Content-Type, X-Requested-With");
-    if($_SERVER['REQUEST_METHOD']=="OPTIONS") {
+    if ($_SERVER['REQUEST_METHOD'] == "OPTIONS") {
         HTTPHeader::setStatusHeader(HTTPStatusCode::HTTP_204_NO_CONTENT);
     } else {
         Router::call_route($_SERVER['REQUEST_METHOD'], $_SERVER['PATH_INFO']);
