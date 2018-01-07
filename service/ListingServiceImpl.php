@@ -16,17 +16,23 @@ use http\HTTPStatusCode;
 
 class ListingServiceImpl implements ListingService
 {
-
     /**
      * @access public
      * @param Listing listing
      * @return Listing
      * @ParamType listing Listing
      * @ReturnType Listing
+     * @throws HTTPException
      */
     public function createListing(Listing $listing)
     {
-        // TODO: Implement createListing() method.
+        if(AuthServiceImpl::getInstance()->verifyAuth()) {
+            $listingDAO = new ListingDAO();
+            $listing->setAgentId(AuthServiceImpl::getInstance()->getCurrentAgentId());
+            return $listingDAO->create($listing);
+        }
+        throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
+
     }
 
     /**
@@ -35,10 +41,16 @@ class ListingServiceImpl implements ListingService
      * @return Listing
      * @ParamType listingId int
      * @ReturnType Listing
+     * @throws HTTPException
      */
     public function readListing($listingID)
     {
-        // TODO: Implement readListing() method.
+        if(AuthServiceImpl::getInstance()->verifyAuth()) {
+            $listingDAO = new ListingDAO();
+            return $listingDAO->read($listingID);
+        }
+        throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
+
     }
 
     /**
@@ -47,10 +59,16 @@ class ListingServiceImpl implements ListingService
      * @return Listing
      * @ParamType listing Listing
      * @ReturnType Listing
+     * @throws HTTPException
      */
     public function updateListing(Listing $listing)
     {
-        // TODO: Implement updateListing() method.
+        if(AuthServiceImpl::getInstance()->verifyAuth()) {
+            $listingDAO = new ListingDAO();
+            return $listingDAO->update($listing);
+        }
+        throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
+
     }
 
     /**
@@ -60,7 +78,12 @@ class ListingServiceImpl implements ListingService
      */
     public function deleteListing($listingId)
     {
-        // TODO: Implement deleteListing() method.
+        if(AuthServiceImpl::getInstance()->verifyAuth()) {
+            $listingDAO = new ListingDAO();
+            $listing = new Listing();
+            $listing->setId($listingId);
+            $listingDAO->delete($listing);
+        }
     }
 
     /**
@@ -70,6 +93,11 @@ class ListingServiceImpl implements ListingService
      */
     public function findAllListings()
     {
-        // TODO: Implement findAllListings() method.
+        if(AuthServiceImpl::getInstance()->verifyAuth()){
+            $listingDAO = new ListingDAO();
+            return $listingDAO->findByUserID(AuthServiceImpl::getInstance()->getCurrentAgentId());
+        }
+        throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
+
     }
 }
