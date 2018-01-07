@@ -97,4 +97,3 @@ class CustomerDAO extends BasicDAO {
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Customer");
 	}
 }
-?>
