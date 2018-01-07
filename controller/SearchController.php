@@ -18,4 +18,14 @@ class SearchController
         $contentView = new TemplateView("view/assets/search_page/search.php");
         LayoutRendering::basicLayout($contentView);
     }
+
+    public static function readAll(){
+        $contentView = new TemplateView("customers.php");
+        $contentView->customers = (new CustomerServiceImpl())->findAllCustomer();
+        LayoutRendering::basicLayout($contentView );
+    }
+
+    public static function readNew(){
+
+    }
 }

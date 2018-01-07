@@ -36,7 +36,6 @@ $authFunction = function () {
 
 // Home path
 Router::route("GET", "/", function () {
-
     HomepageController::show();
 });
 

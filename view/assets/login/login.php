@@ -14,6 +14,12 @@
                 <input class="form-control" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
+                <div class="checkbox">
+                    <label class="control-label">
+                        <input type="checkbox" name="remember" />Remember me for 30 days</label>
+                </div>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
             </div><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/password/request" class="forgot">Forgot your password?</a></form>
     </div>
