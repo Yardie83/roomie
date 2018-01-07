@@ -8,6 +8,7 @@
 
 namespace controller;
 
+use service\ListingServiceImpl;
 use view\TemplateView;
 use view\LayoutRendering;
 
@@ -21,7 +22,7 @@ class SearchController
 
     public static function readAll(){
         $contentView = new TemplateView("customers.php");
-        $contentView->customers = (new CustomerServiceImpl())->findAllCustomer();
+        $contentView->customers = (new ListingServiceImpl())->findAllCustomer();
         LayoutRendering::basicLayout($contentView );
     }
 
