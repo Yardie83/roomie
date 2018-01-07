@@ -90,6 +90,7 @@ class ListingServiceImpl implements ListingService
      * @access public
      * @return Listing[]
      * @ReturnType Listing[]
+     * @throws HTTPException
      */
     public function findAllListings()
     {

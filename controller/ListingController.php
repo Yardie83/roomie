@@ -21,7 +21,7 @@ class ListingController
     }
 
     public static function readAll(){
-        $contentView = new TemplateView("customers.php");
+        $contentView = new TemplateView("assets/adSection/adSection.php");
         $contentView->listings = (new ListingServiceImpl())->findAllListings();
         LayoutRendering::basicLayout($contentView);
     }
