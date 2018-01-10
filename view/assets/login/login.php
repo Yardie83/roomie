@@ -21,7 +21,8 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">Log In</button>
-            </div><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/password/request" class="forgot">Forgot your password?</a></form>
+            </div><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/password/request" class="forgot">Forgot your password?</a>
+        </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

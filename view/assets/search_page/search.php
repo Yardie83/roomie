@@ -1,52 +1,183 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: andreas.martin
+ * Date: 13.09.2017
+ * Time: 17:06
+ */
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>search_page</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="assets/search_page/assets/css/styles.css">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&libraries=places&callback=activatePlacesSearch"></script>
+use domain\Listing;
+use service\AuthServiceImpl;
+use view\TemplateView;
+use validator\CustomerValidator;
 
-    echo <script>
-        function activatePlacesSearch() {
-            var input = document.getElementByID('search_term');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-        }
-    </script>
-
+isset($this->listing) ? $listing = $this->listing : $listing = new Listing();
+//isset($this->customerValidator) ? $customerValidator = $this->customerValidator : $customerValidator = new CustomerValidator();
+?>
+<link rel="stylesheet" href="assets/createAd/assets/css/Form-Select---Full-Date---Month-Day-Year.css">
+<link rel="stylesheet" href="assets/createAd/assets/css/Pretty-Registration-Form.css">
+<link rel="stylesheet" href="assets/createAd/assets/css/styles.css">
+<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center" style="font-family:'Source Sans Pro', sans-serif;margin-bottom:50px;margin-top:50px;">Search a room</h1>
-            <form>
-                <div class="form-group">
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col-md-2 col-md-offset-4 col-sm-offset-1 col-xs-offset-1">
-                            <label class="control-label" style="font-family:'Source Sans Pro', sans-serif;">Room mate gender </label>
-                        </div>
-                        <div class="col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                            <div class="radio">
-                                <label class="control-label">
-                                    <input type="radio" name="genderradio">Male</label>
-                            </div>
-                            <div class="radio">
-                                <label class="control-label">
-                                    <input type="radio" name="genderradio">Female</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col-md-2 col-md-offset-4 col-sm-offset-1 col-xs-offset-1">
-                            <label class="control-label" style="font-family:'Source Sans Pro', sans-serif;">City</label>
-                        </div>
-                        <div class="col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                            <input class="form-control" type="text" id="search_term" placeholder="City"></div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col-md-2 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-6">
-                            <button class="btn btn-primary" type="submit" style="width:150px;">Search </button>
+        <div class="col-md-12" style="padding-bottom: 10px">
+            <h2 class="text-center">SEARCH</h2>
+        </div>
+    </div>
+</div>
+<div class="row register-form">
+    <div class="col-md-8 col-md-offset-3">
+        <form class="form-horizontal custom-form" action="update" method="post">
+            <div class="form-group">
+                <?php
+                if (!empty($listing->getId())) {
+                    echo '<div class="col-sm-4 label-column">
+                    <label class="control-label">Listing ID</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" readonly="" name="id" value="' ?><?php echo $listing->getId(); echo '">
+                    </label>
+                </div>';
+                }
+                ?>
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Street</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="street">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Postal Code</label>
+                </div>
+                <div class="col-sm-6 col-md-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="plz">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">City </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="city">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Canton </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="canton">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">No. of Rooms</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="rooms">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Monthly Rent</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="price">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Square meter</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <label>
+                        <input class="form-control" type="text" name="squareMeters">
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="control-label">Available from</label>
+                </div>
+                <div class="col-md-8 col-sm-6 input-column">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>
+                                <select name="month" class="form-control display-inline-block">
+                                    <option value="1" selected="">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </label>
+                            <label>
+                                <select name="day" class="form-control display-inline-block">
+                                    <option value="1" selected="">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </label>
+                            <label>
+                                <select name="year" class="form-control display-inline-block">
+                                    <option value="2018" selected="">2018</option>
+                                    <option value="2019">2019</option>
+                                </select>
+                            </label>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <button class="btn btn-primary submit-button" type="submit">Save</button>
+        </form>
     </div>
+</div>
