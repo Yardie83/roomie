@@ -138,6 +138,21 @@ class ListingDAO extends BasicDAO
     }
 
     /**
+ * @access public
+ * @param int userId
+ * @return Listing[]
+ * @ParamType userId int
+ * @ReturnType Listing[]
+ */
+    public function findListingById($id) {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT * FROM "listingApartment" WHERE "id" = :Id;');
+        $stmt->bindValue(':Id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Listing");
+    }
+
+    /**
      * @access public
      * @param int userId
      * @return Listing[]
@@ -155,10 +170,10 @@ class ListingDAO extends BasicDAO
     {
         $stmt = $this->pdoInstance->prepare('
             SELECT * FROM "listingApartment"
-            WHERE street = :street OR
+            WHERE upper(street) = :street OR
             plz = :plz OR
-            city = :city OR
-            canton = :canton OR
+            upper(city) = :city OR
+            upper(canton) = :canton OR
             numberofrooms = :numberofrooms OR
             price = :price OR
             squaremeters = :squaremeters OR
@@ -166,16 +181,16 @@ class ListingDAO extends BasicDAO
             moveindate = :moveindate OR 
             moveoutdate = :moveoutdate');
 
-        $stmt->bindValue(':street', $listing->getStreet());
-        $stmt->bindValue(':plz', intval($listing->getPlz()));
-        $stmt->bindValue(':city', $listing->getCity());
-        $stmt->bindValue(':canton', $listing->getCanton());
+        $stmt->bindValue(':street', strtoupper($listing->getStreet()));
+        $stmt->bindValue(':plz', strtoupper(intval($listing->getPlz())));
+        $stmt->bindValue(':city', strtoupper($listing->getCity()));
+        $stmt->bindValue(':canton', strtoupper($listing->getCanton()));
         $stmt->bindValue(':numberofrooms', floatval($listing->getNumberofrooms()));
         $stmt->bindValue(':price', floatval($listing->getPrice()));
         $stmt->bindValue(':squaremeters', floatval($listing->getSquaremeters()));
-        $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
-        $stmt->bindValue(':moveindate', $listing->getMoveInDate());
-        $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
+        $stmt->bindValue(':publisheddate', strtoupper($listing->getPublishedDate()));
+        $stmt->bindValue(':moveindate', strtoupper($listing->getMoveInDate()));
+        $stmt->bindValue(':moveoutdate', strtoupper($listing->getMoveOutDate()));
         $stmt->execute();
 
         $stmt->execute();

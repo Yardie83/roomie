@@ -43,4 +43,13 @@ class SearchController
     public static function readNew(){
 
     }
+
+    public static function getListingById($id)
+    {
+        $contentView = new TemplateView("view/assets/detailView/details.php");
+        $contentView->listing = (new ListingServiceImpl())->findListingById($id);
+        LayoutRendering::basicLayout($contentView );
+
+        //print_r((new ListingServiceImpl())->findListingById($id));
+    }
 }

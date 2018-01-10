@@ -115,4 +115,11 @@ class ListingServiceImpl implements ListingService
         $listingDAO = new ListingDAO();
         return $listingDAO->filterListings($listing);
     }
+
+    public function findListingById($id)
+    {
+        $listingDAO = new ListingDAO();
+        return $listingDAO->findListingById($id);
+
+    }
 }

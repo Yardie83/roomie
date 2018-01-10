@@ -8,7 +8,7 @@ use view\TemplateView;
 <link rel="stylesheet" href="assets/landing/assets/css/styles.css">
 </head>
 
-<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;"><?php echo isset($this->result) ? "We found <strong>".sizeof($this->listings). "</strong> rooms for you": "Available Rooms" ?></p>
+<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;"><?php echo isset($this->result) ? "We found <strong style='color: #f4476b'>".sizeof($this->listings). "</strong> rooms for you": "Available Rooms" ?></p>
 <div>
     <?php
     foreach ($this->listings as $listing): ?>
@@ -30,8 +30,8 @@ use view\TemplateView;
                                 <td><?php echo TemplateView::noHTML($listing->getNumberOfRooms()); ?></td>
                             </tr>
                             <tr>
-                                <td style="font-weight:bold;width:243px;">Number of Rooms</td>
-                                <td><?php echo TemplateView::noHTML($listing->getNumberOfRooms()); ?></td>
+                                <td style="font-weight:bold;width:243px;">Squaremeters</td>
+                                <td><?php echo TemplateView::noHTML($listing->getSquaremeters()); ?></td>
                             </tr>
                             <tr>
                                 <td style="font-weight:bold;">Price</td>
@@ -41,8 +41,9 @@ use view\TemplateView;
                         </table>
                     </div>
                 </div>
-                <div class="col-md-2" style="margin-top:5px;"><i class="glyphicon glyphicon-circle-arrow-right"
-                                                                 style="width:14px;padding-top:67px;font-size:26px;color:rgb(244,71,107);padding-left:38px;"></i>
+                <div class="col-md-2" style="margin-top:5px;">
+                    <a href="<?php echo $GLOBALS["ROOT_URL"] . "/search/" . $listing->getId();?>">
+                    <i class="glyphicon glyphicon-circle-arrow-right" style="width:14px;padding-top:67px;font-size:26px;color:rgb(244,71,107);padding-left:38px;"></i></a>
                 </div>
         </div>
     </div>

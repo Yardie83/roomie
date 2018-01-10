@@ -49,6 +49,10 @@ Router::route("POST", "/search", function () {
     SearchController::readAll();
 });
 
+Router::route("GET", "/search/{id}", function ($id) {
+    SearchController::getListingById($id);
+});
+
 // Login path
 Router::route("GET", "/login", function () {
     UserController::loginView();

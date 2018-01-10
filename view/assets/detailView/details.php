@@ -1,7 +1,7 @@
 <?php
 use view\TemplateView;
 
-$listing = $this->listing;
+$listing = $this->listing[0];
 ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
     <link rel="stylesheet" href="assets/detailView/assets/css/Lightbox-Gallery.css">
@@ -70,13 +70,13 @@ $listing = $this->listing;
             <div class="intro"></div>
             <div class="row photos">
                 <div class="col-lg-3 col-md-4 col-sm-6 item">
-                    <a href="assets/img/desk.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/img/desk.jpg"></a>
+                    <a href="assets/img/desk.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/detailView/assets/img/desk.jpg"></a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 item">
-                    <a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/img/building.jpg"></a>
+                    <a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/detailView/assets/img/building.jpg"></a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 item">
-                    <a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/img/loft.jpg"></a>
+                    <a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-responsive" src="assets/detailView/assets/img/loft.jpg"></a>
                 </div>
             </div>
         </div>

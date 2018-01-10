@@ -149,7 +149,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary submit-button" type="submit">Save</button>
+            <button class="btn btn-primary submit-button" type="submit">Search</button>
         </form>
     </div>
 </div>
