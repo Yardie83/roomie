@@ -146,7 +146,38 @@ class ListingDAO extends BasicDAO
      */
     public function findTopThree() {
         $stmt = $this->pdoInstance->prepare('
-            SELECT * FROM "listingApartment" LIMIT 3');
+            SELECT * FROM "listingApartment" ORDER BY id DESC LIMIT 3');
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Listing");
+    }
+
+    public function filterListings(Listing $listing)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT * FROM "listingApartment"
+            WHERE street = :street OR
+            plz = :plz OR
+            city = :city OR
+            canton = :canton OR
+            numberofrooms = :numberofrooms OR
+            price = :price OR
+            squaremeters = :squaremeters OR
+            publisheddate = :publisheddate OR
+            moveindate = :moveindate OR 
+            moveoutdate = :moveoutdate');
+
+        $stmt->bindValue(':street', $listing->getStreet());
+        $stmt->bindValue(':plz', intval($listing->getPlz()));
+        $stmt->bindValue(':city', $listing->getCity());
+        $stmt->bindValue(':canton', $listing->getCanton());
+        $stmt->bindValue(':numberofrooms', floatval($listing->getNumberofrooms()));
+        $stmt->bindValue(':price', floatval($listing->getPrice()));
+        $stmt->bindValue(':squaremeters', floatval($listing->getSquaremeters()));
+        $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
+        $stmt->bindValue(':moveindate', $listing->getMoveInDate());
+        $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
+        $stmt->execute();
+
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Listing");
     }

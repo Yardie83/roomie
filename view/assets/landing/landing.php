@@ -3,7 +3,7 @@
 use view\TemplateView;
 
 ?>
-<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;">Available Rooms</p>
+<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;"><?php echo isset($this->result) ? "We found <strong>".sizeof($this->listings). "</strong> rooms for you": "Available Rooms" ?></p>
 <div>
     <div class="container">
         <div class="row">

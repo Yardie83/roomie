@@ -10,7 +10,7 @@
 </div>
 <div class="row register-form">
     <div class="col-md-7 col-md-offset-3">
-        <form class="form-horizontal custom-form" action="update" method="post">
+        <form class="form-horizontal custom-form" action="search" method="post">
             <div class="form-group">
                 <div class="col-sm-4 label-column">
                     <label class="control-label">Street</label>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 input-column">
                     <label>
-                        <input class="form-control" type="text" name="plz">
+                        <input class="form-control" type="number" name="plz">
                     </label>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="text" name="rooms">
+                        <input class="form-control" type="number" name="rooms">
                     </label>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="text" name="price">
+                        <input class="form-control" type="number" name="price">
                     </label>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="text" name="squareMeters">
+                        <input class="form-control" type="number" name="squareMeters">
                     </label>
                 </div>
             </div>

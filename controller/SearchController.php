@@ -8,6 +8,7 @@
 
 namespace controller;
 
+use domain\Listing;
 use service\ListingServiceImpl;
 use view\TemplateView;
 use view\LayoutRendering;
@@ -21,8 +22,21 @@ class SearchController
     }
 
     public static function readAll(){
-        $contentView = new TemplateView("customers.php");
-        $contentView->customers = (new ListingServiceImpl())->findAllCustomer();
+        $listing = new Listing();
+        $listing->setCity($_POST["street"]);
+        $listing->setPlz($_POST["plz"]);
+        $listing->setCity($_POST["city"]);
+        $listing->setCanton($_POST["canton"]);
+        $listing->setNumberofrooms($_POST["rooms"]);
+        $listing->setPrice($_POST["price"]);
+        $listing->setSquaremeters($_POST["squareMeters"]);
+        $listing->setPublishedDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+        $listing->setMoveInDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+        $listing->setMoveOutDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+
+        $contentView = new TemplateView("view/assets/landing/landing.php");
+        $contentView->listings = (new ListingServiceImpl())->filterListings($listing);
+        $contentView->result = true;
         LayoutRendering::basicLayout($contentView );
     }
 

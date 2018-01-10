@@ -32,7 +32,7 @@ isset($this->agentValidator) ? $agentValidator = $this->agentValidator : $agentV
         <h2 class="text-center"><?php echo isset($this->pageHeading) ? $this->pageHeading : "<strong>WE-CRM | Create</strong> your account. "; ?></h2></div>
     <form action="<?php echo $GLOBALS["ROOT_URL"]; ?><?php echo isset($this->pageFormAction) ? $this->pageFormAction : "/register"; ?>" method="post">
         <div class="form-group <?php echo $agentValidator->isNameError() ? "has-error" : ""; ?>">
-            <input class="form-control" type="text" name="name" placeholder="Name" value="<?php echo $agent->getName() ?>">
+            <input id="nameID" class="form-control" type="text" name="name" placeholder="Name" value="<?php echo $agent->getName() ?>">
             <p class="help-block"><?php echo $agentValidator->getNameError() ?></p>
         </div>
         <div class="form-group <?php echo $agentValidator->isEmailError() ? "has-error" : ""; ?>">
@@ -51,6 +51,7 @@ isset($this->agentValidator) ? $agentValidator = $this->agentValidator : $agentV
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>
