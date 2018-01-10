@@ -1,19 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: andreas.martin
- * Date: 13.09.2017
- * Time: 17:06
- */
-
-use domain\Listing;
-use service\AuthServiceImpl;
-use view\TemplateView;
-use validator\CustomerValidator;
-
-isset($this->listing) ? $listing = $this->listing : $listing = new Listing();
-//isset($this->customerValidator) ? $customerValidator = $this->customerValidator : $customerValidator = new CustomerValidator();
-?>
 <link rel="stylesheet" href="assets/createAd/assets/css/Form-Select---Full-Date---Month-Day-Year.css">
 <link rel="stylesheet" href="assets/createAd/assets/css/Pretty-Registration-Form.css">
 <link rel="stylesheet" href="assets/createAd/assets/css/styles.css">
@@ -25,21 +9,9 @@ isset($this->listing) ? $listing = $this->listing : $listing = new Listing();
     </div>
 </div>
 <div class="row register-form">
-    <div class="col-md-8 col-md-offset-3">
+    <div class="col-md-7 col-md-offset-3">
         <form class="form-horizontal custom-form" action="update" method="post">
             <div class="form-group">
-                <?php
-                if (!empty($listing->getId())) {
-                    echo '<div class="col-sm-4 label-column">
-                    <label class="control-label">Listing ID</label>
-                </div>
-                <div class="col-sm-6 input-column">
-                    <label>
-                        <input class="form-control" type="text" readonly="" name="id" value="' ?><?php echo $listing->getId(); echo '">
-                    </label>
-                </div>';
-                }
-                ?>
                 <div class="col-sm-4 label-column">
                     <label class="control-label">Street</label>
                 </div>
