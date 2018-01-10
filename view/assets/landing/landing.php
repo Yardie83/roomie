@@ -8,10 +8,7 @@ use view\TemplateView;
 <link rel="stylesheet" href="assets/landing/assets/css/styles.css">
 </head>
 
-
-<p class="text-center"
-   style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;font-weight:normal;">Available
-    Rooms</p>
+<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;"><?php echo isset($this->result) ? "We found <strong>".sizeof($this->listings). "</strong> rooms for you": "Available Rooms" ?></p>
 <div>
     <?php
     foreach ($this->listings as $listing): ?>

@@ -45,6 +45,9 @@ Router::route("GET", "/search", function () {
     SearchController::show();
 });
 
+Router::route("POST", "/search", function () {
+    SearchController::readAll();
+});
 
 // Login path
 Router::route("GET", "/login", function () {

@@ -94,7 +94,6 @@ class ListingServiceImpl implements ListingService
             return $listingDAO->findByUserID(AuthServiceImpl::getInstance()->getCurrentUserId());
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
-
     }
 
     /**
@@ -105,5 +104,15 @@ class ListingServiceImpl implements ListingService
     public function findTopThree() {
         $listingDAO = new ListingDAO();
         return $listingDAO->findTopThree();
+    }
+
+    /**
+     * @access public
+     * @return Listing[]
+     * @ReturnType Listing[]
+     */
+    public function filterListings(Listing $listing) {
+        $listingDAO = new ListingDAO();
+        return $listingDAO->filterListings($listing);
     }
 }
