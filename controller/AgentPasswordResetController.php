@@ -10,7 +10,7 @@ namespace controller;
 
 use service\AuthServiceImpl;
 use view\TemplateView;
-use validator\AgentValidator;
+use validator\UserValidator;
 use service\EmailServiceClient;
 
 class AgentPasswordResetController
@@ -28,9 +28,9 @@ class AgentPasswordResetController
     
     public static function reset(){
         if(AuthServiceImpl::getInstance()->validateToken($_POST["token"])){
-            $agent = AuthServiceImpl::getInstance()->readAgent();
+            $agent = AuthServiceImpl::getInstance()->readUser();
             $agent->setPassword($_POST["password"]);
-            $agentValidator = new AgentValidator($agent);
+            $agentValidator = new UserValidator($agent);
             if($agentValidator->isValid()){
                 if(AuthServiceImpl::getInstance()->editUser($agent->getName(),$agent->getEmail(), $agent->getPassword())){
                     return true;

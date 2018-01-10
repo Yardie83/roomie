@@ -1,44 +1,37 @@
-    <title>registration</title>
-    <link rel="stylesheet" href="assets/registration/assets/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="assets/registration/assets/css/styles.css">
+<?php
 
-    <div class="register-photo">
-        <div class="form-container">
-            <form action="<?php echo $GLOBALS["ROOT_URL"]; ?><?php echo "/register"; ?>" method="post">
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="Username">
+use domain\User;
+use validator\UserValidator;
+
+isset($this->user) ? $user = $this->user : $user = new User();
+isset($this->userValidator) ? $userValidator = $this->userValidator : $userValidator = new UserValidator();
+?>
+<link rel="stylesheet" href="assets/registration/assets/css/Registration-Form-with-Photo.css">
+<link rel="stylesheet" href="assets/registration/assets/css/styles.css">
+
+<div class="register-photo">
+    <div class="form-container">
+        <form action="<?php echo $GLOBALS["ROOT_URL"]; ?><?php echo isset($this->pageFormAction) ? $this->pageFormAction : "/register"; ?>" method="post">
+            <h2 class="text-center"><?php echo isset($this->pageHeading) ? $this->pageHeading : "<strong>Create</strong> an account. "; ?></h2>
+            <div class="form-group">
+                <input class="form-control" type="text" name="name" placeholder="Username" value="<?php echo $user->getUserName() ?>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email" value="<?php echo $user->getEmail() ?>">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password" value="<?php echo $userValidator->getPasswordError() ?>">
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label class="control-label">
+                        <input required="" type="checkbox">I agree to the license terms.</label>
                 </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)">
-                </div>
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Gender <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="#">Male </a></li>
-                            <li role="presentation"><a href="#">Female </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label class="control-label">
-                            <input type="checkbox">I agree to the license terms.</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                </div>
-            </form>
-            <div class="image-holder"></div>
-        </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit"><?php echo isset($this->pageSubmitText) ? $this->pageSubmitText : "Sign up"; ?></button>
+            </div>
+        </form>
+        <div class="image-holder"></div>
     </div>
-    <script src="assets/registration/assets/js/jquery.min.js"></script>
-    <script src="assets/registration/assets/bootstrap/js/bootstrap.min.js"></script>
+</div>

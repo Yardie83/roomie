@@ -1,3 +1,10 @@
+<?php
+
+
+use service\AuthServiceImpl;
+
+$user = AuthServiceImpl::getInstance()->readUser();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,11 +25,11 @@
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" style="height:66px;"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 20px;margin-top:1px;">Username <span class="caret"></span></a>
+                    <li class="dropdown" style="height:66px;"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="padding: 20px;margin-top:1px;"><?php echo $user->getUserName()?> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a href="#">Edit Profile</a></li>
+                            <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/editProfile">Edit Profile</a></li>
                             <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/listing/create">Create Ad</a></li>
-                            <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/listing/edit">Edit Ads</a></li>
+                            <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/agent">My Ads</a></li>
                             <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/logout">Logout </a></li>
                         </ul>
                     </li>

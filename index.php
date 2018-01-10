@@ -39,9 +39,6 @@ Router::route("GET", "/", function () {
     HomepageController::show();
 });
 
-Router::route("POST", "/", function () {
-});
-
 // Search path
 
 Router::route("GET", "/search", function () {
@@ -52,8 +49,6 @@ Router::route("GET", "/search", function () {
 // Login path
 Router::route("GET", "/login", function () {
     UserController::loginView();
-
-    //AgentController::loginView();
 });
 
 Router::route("POST", "/login", function () {
@@ -73,6 +68,16 @@ Router::route("POST", "/register", function () {
         Router::redirect("/agent");
     }
 });
+
+Router::route_auth("GET", "/editProfile", $authFunction, function () {
+    RegisterController::editView();
+});
+
+Router::route_auth("POST", "/editProfile", $authFunction, function () {
+    if (RegisterController::update())
+        Router::redirect("/agent");
+});
+
 
 
 // Logout path
@@ -128,14 +133,19 @@ Router::route_auth("GET", "/listing/edit", $authFunction, function () {
     ListingController::edit();
 });
 
+Router::route_auth("POST", "/listing/edit", $authFunction, function () {
+    if (ListingController::update())
+        Router::redirect("/agent");
+});
+
 Router::route_auth("GET", "/listing/delete", $authFunction, function () {
     ListingController::delete();
-    Router::redirect("/");
+    Router::redirect("/agent");
 });
 
 Router::route_auth("POST", "/listing/update", $authFunction, function () {
     if (ListingController::update())
-        Router::redirect("/");
+        Router::redirect("/agent");
 });
 
 Router::route_auth("GET", "/listing/email", $authFunction, function () {

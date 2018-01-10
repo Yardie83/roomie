@@ -8,39 +8,39 @@
 
 namespace validator;
 
-use domain\Agent;
+use domain\User;
 
-class AgentValidator
+class UserValidator
 {
     private $valid = true;
     private $nameError = null;
     private $emailError = null;
     private $passwordError = null;
 
-    public function __construct(Agent $agent = null)
+    public function __construct(User $user = null)
     {
-        if (!is_null($agent)) {
-            $this->validate($agent);
+        if (!is_null($user)) {
+            $this->validate($user);
         }
     }
 
-    public function validate(Agent $agent)
+    public function validate(User $agentuser)
     {
-        if (!is_null($agent)) {
-            if (empty($agent->getName())) {
+        if (!is_null($agentuser)) {
+            if (empty($agentuser->getUserName())) {
                 $this->nameError = 'Please enter a name';
                 $this->valid = false;
             }
 
-            if (empty($agent->getEmail())) {
+            if (empty($agentuser->getEmail())) {
                 $this->emailError = 'Please enter an email address';
                 $this->valid = false;
-            } else if (!filter_var($agent->getEmail(), FILTER_VALIDATE_EMAIL)) {
+            } else if (!filter_var($agentuser->getEmail(), FILTER_VALIDATE_EMAIL)) {
                 $this->emailError = 'Please enter a valid email address';
                 $this->valid = false;
             }
 
-            if (empty($agent->getPassword())) {
+            if (empty($agentuser->getPassword())) {
                 $this->passwordError = 'Please enter a password';
                 $this->valid = false;
             }

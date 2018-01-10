@@ -6,10 +6,10 @@
  * Time: 21:48
  */
 use domain\Agent;
-use validator\AgentValidator;
+use validator\UserValidator;
 
 isset($this->agent) ? $agent = $this->agent : $agent = new Agent();
-isset($this->agentValidator) ? $agentValidator = $this->agentValidator : $agentValidator = new AgentValidator()
+isset($this->agentValidator) ? $agentValidator = $this->agentValidator : $agentValidator = new UserValidator()
 ?>
 <!DOCTYPE html>
 <html>

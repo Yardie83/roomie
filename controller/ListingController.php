@@ -9,56 +9,73 @@
 namespace controller;
 
 
+use domain\Listing;
 use service\ListingServiceImpl;
+use validator\ListingValidator;
 use view\LayoutRendering;
 use view\TemplateView;
 
 class ListingController
 {
-    public static function create(){
+    public static function create() {
         $contentView = new TemplateView("assets/createAd/createAd.php");
         LayoutRendering::basicLayout($contentView);
     }
 
-    public static function readAll(){
+    public static function readAll() {
         $contentView = new TemplateView("assets/adSection/adSection.php");
         $contentView->listings = (new ListingServiceImpl())->findAllListings();
+        $contentView->showTools = true;
         LayoutRendering::basicLayout($contentView);
     }
 
-    public static function edit(){
-        //$id = $_GET["id"];
+    public static function readTopThree() {
+        $contentView = new TemplateView("assets/adSection/adSection.php");
+        $contentView->listings = (new ListingServiceImpl())->findTopThree();
+        LayoutRendering::basicLayout($contentView);
+    }
+
+    public static function edit() {
+        $id = $_GET["id"];
         $contentView = new TemplateView("assets/createAd/createAd.php");
-        //$contentView->customer = (new CustomerServiceImpl())->readCustomer($id);
+        $contentView->listing = (new ListingServiceImpl())->readListing($id);
         LayoutRendering::basicLayout($contentView);
     }
 
-    public static function update(){
-        $customer = new Customer();
-        $customer->setId($_POST["id"]);
-        $customer->setName($_POST["name"]);
-        $customer->setEmail($_POST["email"]);
-        $customer->setMobile($_POST["mobile"]);
-        $customerValidator = new CustomerValidator($customer);
-        if($customerValidator->isValid()) {
-            if ($customer->getId() === "") {
-                (new CustomerServiceImpl())->createCustomer($customer);
-            } else {
-                (new CustomerServiceImpl())->updateCustomer($customer);
-            }
+    public static function update() {
+        $listing = new Listing();
+        $listing->setId("");
+        if (isset($_POST["id"])) {
+            $listing->setId($_POST["id"]);
         }
-        else{
+        $listing->setUserID($_POST["userID"]);
+        $listing->setStreet($_POST["street"]);
+        $listing->setPlz($_POST["plz"]);
+        $listing->setCity($_POST["city"]);
+        $listing->setCanton($_POST["canton"]);
+        $listing->setNumberofrooms($_POST["rooms"]);
+        $listing->setPrice($_POST["price"]);
+        $listing->setSquaremeters($_POST["squareMeters"]);
+        $listing->setDescription($_POST["description"]);
+        $listingValidator = new ListingValidator($listing);
+        if ($listingValidator->isValid()) {
+            if ($listing->getId() === "") {
+                (new ListingServiceImpl())->createListing($listing);
+            } else {
+                (new ListingServiceImpl())->updateListing($listing);
+            }
+        } else {
             $contentView = new TemplateView("customerEdit.php");
-            $contentView->customer = $customer;
-            $contentView->customerValidator = $customerValidator;
+            $contentView->listing = $listing;
+            $contentView->listingValidator = $listingValidator;
             LayoutRendering::basicLayout($contentView);
             return false;
         }
         return true;
     }
 
-    public static function delete(){
+    public static function delete() {
         $id = $_GET["id"];
-        (new CustomerServiceImpl())->deleteCustomer($id);
+        (new ListingServiceImpl())->deleteListing($id);
     }
 }

@@ -83,7 +83,7 @@ class AuthServiceImpl implements AuthService {
      * @ParamType password String
      * @ReturnType boolean
      */
-    public function verifyAgent($email, $password) {
+    public function verifyUser($email, $password) {
         $userDAO = new UserDAO();
         $user = $userDAO->findByEmail($email);
         if (isset($user)) {
@@ -101,14 +101,14 @@ class AuthServiceImpl implements AuthService {
 
     /**
      * @access public
-     * @return Agent
+     * @return User
      * @ReturnType Agent
      * @throws HTTPException
      */
-    public function readAgent() {
+    public function readUser() {
         if($this->verifyAuth()) {
-            $agentDAO = new AgentDAO();
-            return $agentDAO->read($this->currentUserId);
+            $userDAO = new UserDAO();
+            return $userDAO->read($this->currentUserId);
         }
         throw new HTTPException(HTTPStatusCode::HTTP_401_UNAUTHORIZED);
     }
@@ -131,7 +131,7 @@ class AuthServiceImpl implements AuthService {
         $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
         $userDAO = new UserDAO();
         if($this->verifyAuth()) {
-            //$user->set($this->currentUserId);
+            $user->set($this->currentUserId);
             if($userDAO->read($this->currentUserId)->getEmail() !== $email) {
                 if (!is_null($userDAO->findByEmail($email))) {
                     return false;
@@ -187,6 +187,7 @@ class AuthServiceImpl implements AuthService {
      * https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence
      * https://www.owasp.org/index.php/PHP_Security_Cheat_Sheet#Authentication
      * https://stackoverflow.com/a/31419246
+     * @throws \Exception
      */
     public function issueToken($type = self::AGENT_TOKEN, $email = null) {
         $token = new AuthToken();

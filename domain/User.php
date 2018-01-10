@@ -18,7 +18,7 @@ class User
     /**
      * @AttributeType String
      */
-    protected $userName;
+    protected $username = "";
     /**
      * @AttributeType String
      */
@@ -49,7 +49,7 @@ class User
      */
     public function getUserName()
     {
-        return $this->userName;
+        return $this->username;
     }
 
     /**
@@ -61,7 +61,7 @@ class User
      */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->username = $userName;
     }
 
     /**
@@ -122,5 +122,10 @@ class User
     public function setIsAdmin($isAdmin)
     {
         $this->isAdmin = $isAdmin;
+    }
+
+    public function set($currentUserId) {
+        $this->id = $currentUserId;
+
     }
 }

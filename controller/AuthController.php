@@ -29,7 +29,7 @@ class AuthController
 
     public static function login(){
         $authService = AuthServiceImpl::getInstance();
-        if($authService->verifyAgent($_POST["email"],$_POST["password"]))
+        if($authService->verifyUser($_POST["email"],$_POST["password"]))
         {
             $token = $authService->issueToken();
             $_SESSION["agentLogin"]["token"] = $token;

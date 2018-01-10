@@ -8,6 +8,7 @@
 
 namespace controller;
 
+use service\ListingServiceImpl;
 use view\LayoutRendering;
 use view\TemplateView;
 
@@ -16,6 +17,7 @@ class HomepageController
     public static function show()
     {
         $contentView = new TemplateView("view/assets/landing/landing.php");
+        $contentView->listings = (new ListingServiceImpl())->findTopThree();
         LayoutRendering::basicLayout($contentView);
     }
 }

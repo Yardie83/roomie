@@ -14,7 +14,8 @@ isset($this->customerValidator) ? $customerValidator = $this->customerValidator 
 ?>
 <div class="container">
     <div class="page-header">
-        <h2 class="text-center">A <strong>customer</strong>. </h2></div>
+        <h2 class="text-center">A <strong>customer</strong>. </h2>
+    </div>
     <form action="update" method="post">
         <div class="form-group">
             <div class="input-group">

@@ -9,6 +9,7 @@
 namespace view;
 
 use controller\AuthController;
+use service\AuthServiceImpl;
 
 
 class LayoutRendering

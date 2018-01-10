@@ -26,10 +26,10 @@ class UserDAO extends BasicDAO
         return $this->read($this->pdoInstance->lastInsertId());
     }
 
-    public function read($registeredUserID) {
+    public function read($userID) {
         $stmt = $this->pdoInstance->prepare('
             SELECT * FROM "user" WHERE id = :id;');
-        $stmt->bindValue(':id', $registeredUserID);
+        $stmt->bindValue(':id', $userID);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\User")[0];

@@ -33,14 +33,14 @@ interface AuthService {
      * @ParamType password String
      * @ReturnType boolean
      */
-    public function verifyAgent($email, $password);
+    public function verifyUser($email, $password);
 
     /**
      * @access public
      * @return Agent
      * @ReturnType Agent
      */
-    public function readAgent();
+    public function readUser();
 
     /**
      * @access public

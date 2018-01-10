@@ -11,22 +11,22 @@ namespace domain;
 
 class Listing
 {
-    private $id;
-    private $registeredUserID;
-    private $street;
-    private $plz;
-    private $city;
-    private $canton;
-    private $numberOfRooms;
-    private $price;
-    private $squareMeters;
-    private $publishedDate;
-    private $moveInDate;
-    private $moveOutDate;
-    private $description;
-    private $image1;
-    private $image2;
-    private $image3;
+    protected $id;
+    protected $userID;
+    protected $street;
+    protected $plz;
+    protected $city;
+    protected $canton;
+    protected $numberofrooms;
+    protected $price;
+    protected $squaremeters;
+    protected $publishedDate;
+    protected $moveInDate;
+    protected $moveOutDate;
+    protected $description;
+    protected $image1;
+    protected $image2;
+    protected $image3;
 
     /**
      * @return mixed
@@ -49,15 +49,15 @@ class Listing
      */
     public function getUserID()
     {
-        return $this->registeredUserID;
+        return $this->userID;
     }
 
     /**
-     * @param int $registeredUserID
+     * @param int $userID
      */
-    public function setRegisteredUserID($registeredUserID)
+    public function setUserID($userID)
     {
-        $this->registeredUserID = $registeredUserID;
+        $this->userID = $userID;
     }
 
     /**
@@ -127,17 +127,17 @@ class Listing
     /**
      * @return mixed
      */
-    public function getNumberOfRooms()
+    public function getNumberofrooms()
     {
-        return $this->numberOfRooms;
+        return $this->numberofrooms;
     }
 
     /**
-     * @param mixed $numberOfRooms
+     * @param mixed $numberofrooms
      */
-    public function setNumberOfRooms($numberOfRooms)
+    public function setNumberofrooms($numberofrooms)
     {
-        $this->numberOfRooms = $numberOfRooms;
+        $this->numberofrooms = $numberofrooms;
     }
 
     /**
@@ -159,17 +159,17 @@ class Listing
     /**
      * @return mixed
      */
-    public function getSquareMeters()
+    public function getSquaremeters()
     {
-        return $this->squareMeters;
+        return $this->squaremeters;
     }
 
     /**
-     * @param mixed $squareMeters
+     * @param mixed $squaremeters
      */
-    public function setSquareMeters($squareMeters)
+    public function setSquaremeters($squaremeters)
     {
-        $this->squareMeters = $squareMeters;
+        $this->squaremeters = $squaremeters;
     }
 
     /**
