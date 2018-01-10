@@ -47,7 +47,6 @@ use view\TemplateView;
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="confirm-modal">
         <div class="modal-dialog modal-sm" role="document">
@@ -60,10 +59,11 @@ use view\TemplateView;
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" role="button" href="#">Delete</a>
+                    <a class="btn btn-primary" role="button" href="listing/delete?id=<?php echo $listing->getId(); ?>"> Delete</a>
                 </div>
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 </div>
 
