@@ -3,42 +3,53 @@
 use view\TemplateView;
 
 ?>
-<p class="text-center" style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;">Available Rooms</p>
+<!--<link rel="stylesheet" href="assets/landing/assets/css/Article-List.css">-->
+<link rel="stylesheet" href="assets/landing/assets/css/Table-with-search.css">
+<link rel="stylesheet" href="assets/landing/assets/css/styles.css">
+</head>
+
+
+<p class="text-center"
+   style="font-style:normal;line-height:19px;font-size:36px;height:56px;margin-top:23px;font-weight:normal;">Available
+    Rooms</p>
 <div>
-    <div class="container">
+    <?php
+    foreach ($this->listings as $listing): ?>
+    <div class="container listing">
         <div class="row">
-            <?php
-            foreach ($this->listings as $listing): ?>
-            <!--                <div class="col-md-6" style="width:320px;margin-left:0px;"><img-->
-            <!--                            src=--><?php //echo TemplateView::noHTML($listing->image1()); ?><!-- class="center-block"-->
-            <!--                            style="height:137px;width:137px;"></div>-->
-            <!--                <div class="col-md-6">-->
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td style="font-weight:bold;">City</td>
-                        <td><?php echo TemplateView::noHTML($listing->getCity()); ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:bold;">Address</td>
-                        <td><?php echo TemplateView::noHTML($listing->getStreet()); ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:bold;">Rooms</td>
-                        <td><?php echo TemplateView::noHTML($listing->getNumberOfRooms()); ?></td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight:bold;width:243px;">Monthly Rent</td>
-                        <td><?php echo TemplateView::noHTML($listing->getPrice()); ?></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <?php endforeach; ?>
+                <div class="col-md-6" style="width:320px;margin-left:0px;margin-top:14px;"><img class="center-block"
+                                                                                                style="height:137px;width:137px;">
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive" style="margin:0px;margin-top:0px;padding-top:6px;padding-bottom:0px;">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td style="font-weight:bold;width:234px;height:41px;">City</td>
+                                <td style="height:36px;"><?php echo TemplateView::noHTML($listing->getCity()); ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;">Rooms</td>
+                                <td><?php echo TemplateView::noHTML($listing->getNumberOfRooms()); ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;width:243px;">Number of Rooms</td>
+                                <td><?php echo TemplateView::noHTML($listing->getNumberOfRooms()); ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:bold;">Price</td>
+                                <td><?php echo TemplateView::noHTML($listing->getPrice()); ?></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-top:5px;"><i class="glyphicon glyphicon-circle-arrow-right"
+                                                                 style="width:14px;padding-top:67px;font-size:26px;color:rgb(244,71,107);padding-left:38px;"></i>
+                </div>
         </div>
     </div>
-
+    <?php endforeach; ?>
 </div>
+
+<script src="assets/landing/assets/js/Table-with-search.js"></script>

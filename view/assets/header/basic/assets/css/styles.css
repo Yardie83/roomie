@@ -2,3 +2,7 @@ html {
     position: relative;
     min-height: 100%;
 }
+
+.header-container {
+    margin-bottom: 100px;
+}

@@ -5,13 +5,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <link rel="stylesheet" href="assets/search_page/assets/css/styles.css">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&libraries=places&callback=activatePlacesSearch"></script>
+    <script type="text/javascript" src="javaScript.js"></script>
 
-    echo <script>
-        function activatePlacesSearch() {
-            var input = document.getElementByID('search_term');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-        }
-    </script>
+
 
     <div class="row">
         <div class="col-md-12">
@@ -38,7 +34,7 @@
                             <label class="control-label" style="font-family:'Source Sans Pro', sans-serif;">City</label>
                         </div>
                         <div class="col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                            <input class="form-control" type="text" id="search_term" placeholder="City"></div>
+                            <input class="form-control" type="text" id="search_term" onBlur="returnCharThree()" placeholder="City"></div>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom:20px;">

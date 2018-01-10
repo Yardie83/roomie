@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/header/basic/assets/css/styles.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
 
-<div>
+<div class="header-container">
     <nav class="navbar navbar-default navigation-clean-search" style="height:66px;">
         <div class="container">
             <div class="navbar-header"><a class="navbar-brand navbar-link" href="<?php echo $GLOBALS["ROOT_URL"]; ?>/" data-bs-hover-animate="wobble" style="font-size:30px;font-weight:bold;font-style:normal;margin:6px;height:50px;color:rgb(244,71,107);">Roomie </a>
