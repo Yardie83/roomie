@@ -96,13 +96,17 @@ Router::route("GET", "/logout", function () {
 
 
 // Password request path
-Router::route("POST", "/password/request", function () {
-    AgentPasswordResetController::resetEmail();
-    Router::redirect("/login");
-});
-
 Router::route("GET", "/password/request", function () {
     AgentPasswordResetController::requestView();
+});
+
+Router::route("POST", "/password/request", function () {
+    AgentPasswordResetController::resetEmail();
+    Router::redirect("/checkMail");
+});
+
+Router::route("GET", "/checkMail", function () {
+    AgentPasswordResetController::checkEmailView();
 });
 
 
@@ -185,7 +189,7 @@ Router::route_auth("GET", "/customer/email", $authFunction, function () {
     Router::redirect("/");
 });
 
-Router::route_auth("GET", "/pdf/{id}", $authFunction, function ($id) {
+Router::route("GET", "/pdf/{id}", function ($id) {
     PDFController::generatePDFCustomers($id);
 });
 
