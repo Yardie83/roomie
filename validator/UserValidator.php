@@ -16,6 +16,7 @@ class UserValidator
     private $nameError = null;
     private $emailError = null;
     private $passwordError = null;
+    private $userNameError;
 
     public function __construct(User $user = null)
     {
@@ -90,5 +91,16 @@ class UserValidator
     public function getPasswordError()
     {
         return $this->passwordError;
+    }
+
+    public function getUserNameError()
+    {
+        return $this->userNameError;
+    }
+
+    public function setUserNameError($userNameError)
+    {
+        $this->userNameError = $userNameError;
+        $this->valid = false;
     }
 }

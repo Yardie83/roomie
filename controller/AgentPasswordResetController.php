@@ -9,6 +9,7 @@
 namespace controller;
 
 use service\AuthServiceImpl;
+use view\LayoutRendering;
 use view\TemplateView;
 use validator\UserValidator;
 use service\EmailServiceClient;
@@ -23,7 +24,8 @@ class AgentPasswordResetController
     }
     
     public static function requestView(){
-        echo (new TemplateView("agentPasswordResetRequest.php"))->render();
+        $view = new TemplateView("view/assets/requestPassword/requestPassword.php");
+        LayoutRendering::basicLayout($view);
     }
     
     public static function reset(){

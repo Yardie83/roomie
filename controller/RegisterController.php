@@ -46,20 +46,23 @@ class RegisterController
         $user->setUserName($_POST["name"]);
         $user->setEmail($_POST["email"]);
         $user->setPassword($_POST["password"]);
-        $agentValidator = new UserValidator($user);
-        if($agentValidator->isValid()){
-            if(AuthServiceImpl::getInstance()->editUser($user->getUserName(),$user->getEmail(), $user->getPassword())){
+        $userValidator = new UserValidator($user);
+        if($userValidator->isValid()){
+            if(AuthServiceImpl::getInstance()->editUser($user)){
                 return true;
-            }else{
-                $agentValidator->setEmailError("Email already exists");
+            }else if($user->getEmailError()){
+                $userValidator->setEmailError("Email already exists");
+            }
+            else if($user->getUserNameError()){
+                $userValidator->setUserNameError("Username already exists");
             }
         }
         $user->setPassword("");
         if (is_null($view))
-            $view = new TemplateView("agentEdit.php");
+            $view = new TemplateView("view/assets/registration/register.php");
         $view->user = $user;
-        $view->userValidator = $agentValidator;
-        echo $view->render();
+        $view->userValidator = $userValidator;
+        LayoutRendering::basicLayout($view);
         return false;
     }
 

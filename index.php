@@ -70,7 +70,7 @@ Router::route("GET", "/register", function () {
 });
 
 Router::route("POST", "/register", function () {
-    if (AgentController::register()){
+    if (RegisterController::register()){
         AuthController::login();
         Router::redirect("/agent");
     }

@@ -14,11 +14,11 @@ use view\TemplateView;
     foreach ($this->listings as $listing): ?>
     <div class="container listing">
         <div class="row">
-                <div class="col-md-6" style="width:320px;margin-left:0px;margin-top:14px;"><img class="center-block"
+                <div class="col-md-6" style="width:320px;margin-left:0;margin-top:14px;"><img class="center-block"
                                                                                                 style="height:137px;width:137px;">
                 </div>
                 <div class="col-md-6">
-                    <div class="table-responsive" style="margin:0px;margin-top:0px;padding-top:6px;padding-bottom:0px;">
+                    <div class="table-responsive" style="margin: 0;padding-top:6px;padding-bottom:0;">
                         <table class="table">
                             <tbody>
                             <tr>

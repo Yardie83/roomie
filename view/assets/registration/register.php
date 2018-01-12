@@ -15,12 +15,15 @@ isset($this->userValidator) ? $userValidator = $this->userValidator : $userValid
             <h2 class="text-center"><?php echo isset($this->pageHeading) ? $this->pageHeading : "<strong>Create</strong> an account. "; ?></h2>
             <div class="form-group">
                 <input class="form-control" type="text" name="name" placeholder="Username" value="<?php echo $user->getUserName() ?>">
+                <p class="help-block" style="color: rgb(244,71,107)"><?php echo $userValidator->getUserNameError() ?></p>
             </div>
             <div class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="Email" value="<?php echo $user->getEmail() ?>">
+                <p class="help-block" style="color: rgb(244,71,107)"><?php echo $userValidator->getEmailError() ?></p>
             </div>
             <div class="form-group">
                 <input class="form-control" type="password" name="password" placeholder="Password" value="<?php echo $userValidator->getPasswordError() ?>">
+                <p class="help-block" style="color: rgb(244,71,107)"><?php echo $userValidator->getPasswordError() ?></p>
             </div>
             <div class="form-group">
                 <div class="checkbox">

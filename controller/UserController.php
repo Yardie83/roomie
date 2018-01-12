@@ -9,6 +9,7 @@
 namespace controller;
 
 
+
 use view\LayoutRendering;
 use view\TemplateView;
 
@@ -20,4 +21,6 @@ class UserController
         $contentView = new TemplateView("view/assets/login/login.php");
         LayoutRendering::basicLayout($contentView);
     }
+
+
 }

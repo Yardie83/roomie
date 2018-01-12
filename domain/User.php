@@ -32,6 +32,9 @@ class User
      */
     protected $isAdmin;
 
+    private $emailError;
+
+    private $userNameError;
     /**
      * @access public
      * @return int
@@ -124,8 +127,37 @@ class User
         $this->isAdmin = $isAdmin;
     }
 
-    public function set($currentUserId) {
+    public function set($currentUserId)
+    {
         $this->id = $currentUserId;
 
     }
+
+    public function setEmailError($hasError)
+    {
+        $this->emailError = $hasError;
+    }
+
+    public function setUserNameError($hasError)
+    {
+        $this->userNameError = $hasError;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailError()
+    {
+        return $this->emailError;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserNameError()
+    {
+        return $this->userNameError;
+    }
+
+
 }

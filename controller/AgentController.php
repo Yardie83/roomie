@@ -11,6 +11,7 @@ namespace controller;
 use dao\UserDAO;
 use service\AuthServiceImpl;
 use validator\AgentValidator;
+use validator\UserValidator;
 use view\TemplateView;
 use domain\Agent;
 use domain\User;
@@ -54,22 +55,22 @@ class AgentController
     }
 
     public static function register($view = null){
-        $agent = new Agent();
-        $agent->setName($_POST["name"]);
-        $agent->setEmail($_POST["email"]);
-        $agent->setPassword($_POST["password"]);
-        $agentValidator = new AgentValidator($agent);
+        $user = new User();
+        $user->setUserName($_POST["name"]);
+        $user->setEmail($_POST["email"]);
+        $user->setPassword($_POST["password"]);
+        $agentValidator = new UserValidator($user);
         if($agentValidator->isValid()){
-            if(AuthServiceImpl::getInstance()->editUser($agent->getName(),$agent->getEmail(), $agent->getPassword())){
+            if(AuthServiceImpl::getInstance()->editUser($user->getUserName(),$user->getEmail(), $user->getPassword())){
                 return true;
             }else{
                 $agentValidator->setEmailError("Email already exists");
             }
         }
-        $agent->setPassword("");
+        $user->setPassword("");
         if (is_null($view))
             $view = new TemplateView("agentEdit.php");
-        $view->agent = $agent;
+        $view->agent = $user;
         $view->agentValidator = $agentValidator;
         echo $view->render();
         return false;
