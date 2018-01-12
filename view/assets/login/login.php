@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="assets/login/assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/login/assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/login/assets/css/styles.css">
-
+    <h2 class="text-center">Login</h2>
     <div class="login-clean" style="background-color:rgb(254,254,254);">
         <form action="<?php echo $GLOBALS["ROOT_URL"]; ?>/login" method="post">
             <h2 class="sr-only">Login Form</h2>
