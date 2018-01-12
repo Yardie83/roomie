@@ -9,14 +9,19 @@
 namespace controller;
 
 use service\CustomerServiceImpl;
+use service\ListingServiceImpl;
+use view\LayoutRendering;
 use view\TemplateView;
 use service\PDFServiceClient;
 
 class PDFController
 {
-    public static function generatePDFCustomers(){
-        $pdfView = new TemplateView("customerListPDF.php");
-        $pdfView->customers = (new CustomerServiceImpl())->findAllCustomer();
+    public static function generatePDFCustomers($id){
+
+        $pdfView = new TemplateView("view/assets/detailView/details.php");
+        $pdfView->listing = (new ListingServiceImpl())->findListingById($id);
+        //LayoutRendering::basicLayout($pdfView);
+
         $result = PDFServiceClient::sendPDF($pdfView->render());
         header("Content-Type: application/pdf", NULL, 200);
         echo $result;

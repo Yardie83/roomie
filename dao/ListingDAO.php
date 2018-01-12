@@ -21,6 +21,7 @@ class ListingDAO extends BasicDAO
      * @ReturnType Listing
      */
     public function create(Listing $listing) {
+
         $stmt = $this->pdoInstance->prepare('
             INSERT INTO "listingApartment" ("userID", street, plz, city, canton, numberofrooms, price, squaremeters, publisheddate, moveindate, moveoutdate, description, image1, image2, image3)
            VALUES (:userID, :street, :plz, :city, :canton, :numberofrooms, :price, :squaremeters, :publisheddate, :moveindate, :moveoutdate, :description, :image1, :image2, :image3)');
@@ -32,7 +33,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':numberofrooms', $listing->getNumberofrooms());
         $stmt->bindValue(':price', $listing->getPrice());
         $stmt->bindValue(':squaremeters', $listing->getSquaremeters());
-        $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
+        $stmt->bindValue(':publisheddate', date("Y-m-d"));
         $stmt->bindValue(':moveindate', $listing->getMoveInDate());
         $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
         $stmt->bindValue(':description', $listing->getDescription());

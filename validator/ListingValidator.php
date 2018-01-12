@@ -54,6 +54,12 @@ class ListingValidator
                 $this->roomsError = 'Please enter the number of rooms';
                 $this->valid = false;
             }
+
+            if (!is_numeric($listing->getNumberofrooms())){
+                $this->roomsError = 'Please enter a NUMBER';
+                $this->valid = false;
+            }
+
             if (empty($listing->getPrice())){
                 $this->rentError = 'Please enter the monthly rent';
                 $this->valid = false;

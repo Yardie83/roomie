@@ -57,6 +57,20 @@ class ListingController
         $listing->setPrice($_POST["price"]);
         $listing->setSquaremeters($_POST["squareMeters"]);
         $listing->setDescription($_POST["description"]);
+
+        $moveInDay = ($_POST["moveInDay"]);
+        $moveInMonth = ($_POST["moveInMonth"]);
+        $moveInYear = ($_POST["moveInYear"]);
+        $listing->setMoveInDate($moveInYear . "-" . $moveInMonth . "-" . $moveInDay);
+
+        $moveOutDay = ($_POST["moveOutDay"]);
+        $moveOutMonth = ($_POST["moveOutMonth"]);
+        $moveOutYear = ($_POST["moveOutYear"]);
+
+        if(!($moveOutDay == "-" || $moveOutMonth == "-" || $moveOutYear == "-")){
+            $listing->setMoveOutDate($moveOutYear . "-" . $moveOutMonth . "-" . $moveOutDay);
+        }
+
         $listingValidator = new ListingValidator($listing);
         if ($listingValidator->isValid()) {
             if ($listing->getId() === "") {
@@ -65,7 +79,7 @@ class ListingController
                 (new ListingServiceImpl())->updateListing($listing);
             }
         } else {
-            $contentView = new TemplateView("customerEdit.php");
+            $contentView = new TemplateView("assets/createAd/createAd.php");
             $contentView->listing = $listing;
             $contentView->listingValidator = $listingValidator;
             LayoutRendering::basicLayout($contentView);

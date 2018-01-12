@@ -185,8 +185,8 @@ Router::route_auth("GET", "/customer/email", $authFunction, function () {
     Router::redirect("/");
 });
 
-Router::route_auth("GET", "/customer/pdf", $authFunction, function () {
-    PDFController::generatePDFCustomers();
+Router::route_auth("GET", "/pdf/{id}", $authFunction, function ($id) {
+    PDFController::generatePDFCustomers($id);
 });
 
 /*
