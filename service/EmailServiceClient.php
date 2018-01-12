@@ -44,8 +44,8 @@ class EmailServiceClient
             }
           ],
           "from": {
-            "email": "noreply@fhnw.ch",
-            "name": "WE-CRM"
+            "email": "roomie@fhnw.ch",
+            "name": "Roomie Support"
           },
           "subject": "subject",
           "content": [

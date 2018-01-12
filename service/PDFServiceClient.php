@@ -32,6 +32,12 @@ class PDFServiceClient
     }
 
     protected static function createPDFJSONObj(){
-        return json_decode('{"content": "HTML", "user": "HYPDF_USER", "password": "YOUR_HYPDF_PASSWORD", "test": "true"}');
+        return json_decode('{
+        "content": "HTML", 
+        "title" : "Roomie",
+        "user": "HYPDF_USER", 
+        "password": 
+        "YOUR_HYPDF_PASSWORD", 
+        "test": "true"}');
     }
 }

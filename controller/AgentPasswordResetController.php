@@ -54,4 +54,10 @@ class AgentPasswordResetController
         return EmailServiceClient::sendEmail($_POST["email"], "Password Reset Email", $emailView->render());
     }
 
+    public static function checkEmailView()
+    {
+        $view = new TemplateView("view/assets/checkMails/checkMail.php");
+        LayoutRendering::basicLayout($view);
+    }
+
 }
