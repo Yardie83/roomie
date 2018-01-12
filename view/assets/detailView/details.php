@@ -95,7 +95,7 @@ $listing = $this->listing[0];
             <h2 class="text-center">Location </h2></div>
     </div>
     <iframe allowfullscreen="" frameborder="0" width="100%" height="450"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&amp;q=Peter-Merian-Strasse%2C+Switzerland&amp;zoom=15"></iframe>
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&amp;q=<?php echo $listing->getStreet(). "+" . $listing->getCity()?>+Switzerland&amp;zoom=15"></iframe>
 </div>
 <script src="assets/detailView/assets/js/jquery.min.js"></script>
 <script src="assets/detailView/assets/bootstrap/js/bootstrap.min.js"></script>
