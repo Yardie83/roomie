@@ -10,7 +10,7 @@
 </div>
 <div class="row register-form">
     <div class="col-md-7 col-md-offset-3">
-        <form class="form-horizontal custom-form" action="search" method="post">
+        <form class="form-horizontal custom-form" action="search" method="post" style="font-family: 'Helvetica'; padding: 10px 10px 10px 10px">
             <div class="form-group">
                 <div class="col-sm-4 label-column">
                     <label class="control-label">Street</label>

@@ -23,12 +23,10 @@ $listing = $this->listing[0];
                 <div class="col-md-10" style="width:432px;">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
                             <tr>
-                                <th style="font-weight:normal;"><strong>Street</strong></th>
-                                <th style="font-weight:normal;"><?php echo TemplateView::noHTML($listing->getStreet()); ?> </th>
+                                <td><strong>Street</strong></td>
+                                <th style="font-weight:normal"><?php echo TemplateView::noHTML($listing->getStreet()); ?> </th>
                             </tr>
-                            </thead>
                             <tbody>
                             <tr>
                                 <td><strong>Postal Code</strong></td>

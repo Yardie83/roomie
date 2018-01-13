@@ -20,7 +20,7 @@ use view\TemplateView;
                         <table class="table">
                             <tbody>
                             <tr>
-                                <td style="font-weight:bold;">City</td>
+                                <td style="font-weight:bold; border-top: none;">City</td>
                                 <td><?php echo TemplateView::noHTML($listing->getCity()); ?>
                                 </td>
                             </tr>

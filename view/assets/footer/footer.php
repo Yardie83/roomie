@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="assets/footer/assets/css/styles.css">
     <div class="footer-basic">
         <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-social-bitcoin"></i></a><a href="#"><i class="icon ion-email"></i></a></div>
+            <div class="social"><a href="https://github.com/Yardie83/roomie"><i class="icon ion-social-github"></i></div>
             <ul class="list-inline">
-                <li><a href="#">Home </a></li>
+                <li><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>">Home </a></li>
             </ul>
             <p class="copyright" style="color:rgb(244,71,107);">With <i class="glyphicon glyphicon-heart"></i> for FHNW; Hermann Grieder, Loris Grether, Tobias Gerhard</p>
         </footer>
