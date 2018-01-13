@@ -173,7 +173,8 @@ class ListingDAO extends BasicDAO
     {
         $stmt = $this->pdoInstance->prepare('
             SELECT * FROM "listingApartment"
-            WHERE upper(street) = :street OR
+            WHERE upper(street) = :street 
+            OR
             plz = :plz OR
             upper(city) = :city OR
             upper(canton) = :canton OR

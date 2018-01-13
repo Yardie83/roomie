@@ -26,12 +26,6 @@ isset($this->userValidator) ? $userValidator = $this->userValidator : $userValid
                 <p class="help-block" style="color: rgb(244,71,107)"><?php echo $userValidator->getPasswordError() ?></p>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label class="control-label">
-                        <input required="" type="checkbox">I agree to the license terms.</label>
-                </div>
-            </div>
-            <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit"><?php echo isset($this->pageSubmitText) ? $this->pageSubmitText : "Sign up"; ?></button>
             </div>
         </form>

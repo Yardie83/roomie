@@ -33,11 +33,10 @@ class RegisterController
     }
 
     public static function update(){
-        $view = new TemplateView("agentEdit.php");
-        $view->pageTitle = "WE-CRM";
-        $view->pageHeading = "<strong>WE-CRM | Update</strong> your account.";
+        $view = new TemplateView("view/assets/registration/register.php");
+        $view->pageHeading = "<strong>Update</strong> your account.";
         $view->pageSubmitText = "Update";
-        $view->pageFormAction = "/agent/edit";
+        $view->pageFormAction = "/editProfile";
         return self::register($view);
     }
 
@@ -50,10 +49,10 @@ class RegisterController
         if($userValidator->isValid()){
             if(AuthServiceImpl::getInstance()->editUser($user)){
                 return true;
-            }else if($user->getEmailError()){
+            }else if($user->getEmailError() && is_null($view)){
                 $userValidator->setEmailError("Email already exists");
             }
-            else if($user->getUserNameError()){
+            else if($user->getUserNameError() && is_null($view)){
                 $userValidator->setUserNameError("Username already exists");
             }
         }

@@ -80,10 +80,7 @@ Router::route_auth("POST", "/editProfile", $authFunction, function () {
         Router::redirect("/user");
 });
 
-
-
 // Logout path
-
 Router::route("GET", "/logout", function () {
     AuthController::logout();
     Router::redirect("/");
