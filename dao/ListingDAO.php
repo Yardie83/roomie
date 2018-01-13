@@ -36,7 +36,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':price', $listing->getPrice());
         $stmt->bindValue(':squaremeters', $listing->getSquaremeters());
         $stmt->bindValue(':publisheddate', date("Y-m-d"));
-        $stmt->bindValue(':moveindate', $listing->getMoveInDate());
+        $stmt->bindValue(':moveindate', $listing->getMoveindate());
         $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
         $stmt->bindValue(':description', $listing->getDescription());
         $stmt->bindValue(':image1', $listing->getImage1());
@@ -101,7 +101,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':price', $listing->getPrice());
         $stmt->bindValue(':squaremeters', $listing->getSquaremeters());
         $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
-        $stmt->bindValue(':moveindate', $listing->getMoveInDate());
+        $stmt->bindValue(':moveindate', $listing->getMoveindate());
         $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
         $stmt->bindValue(':description', $listing->getDescription());
         $stmt->bindValue(':image1', $listing->getImage1());
@@ -192,7 +192,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':price', floatval($listing->getPrice()));
         $stmt->bindValue(':squaremeters', floatval($listing->getSquaremeters()));
         $stmt->bindValue(':publisheddate', strtoupper($listing->getPublishedDate()));
-        $stmt->bindValue(':moveindate', strtoupper($listing->getMoveInDate()));
+        $stmt->bindValue(':moveindate', strtoupper($listing->getMoveindate()));
         $stmt->bindValue(':moveoutdate', strtoupper($listing->getMoveOutDate()));
         $stmt->execute();
 
