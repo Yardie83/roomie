@@ -23,16 +23,21 @@ class SearchController
 
     public static function readAll(){
         $listing = new Listing();
-        $listing->setCity($_POST["street"]);
+        $listing->setStreet($_POST["street"]);
         $listing->setPlz($_POST["plz"]);
         $listing->setCity($_POST["city"]);
         $listing->setCanton($_POST["canton"]);
         $listing->setNumberofrooms($_POST["rooms"]);
         $listing->setPrice($_POST["price"]);
         $listing->setSquaremeters($_POST["squareMeters"]);
-        $listing->setPublishedDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
-        $listing->setMoveindate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
-        $listing->setMoveoutdate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+
+        //$listing->setPublishedDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+
+        if (!($_POST["year"] == "-" || $_POST["month"] == "-" || $_POST["day"])){
+            $listing->setMoveindate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+        }
+
+        //$listing->setMoveoutdate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
 
         $contentView = new TemplateView("view/assets/landing/landing.php");
         $contentView->listings = (new ListingServiceImpl())->filterListings($listing);

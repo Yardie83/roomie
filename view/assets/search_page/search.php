@@ -121,7 +121,7 @@
                         <div class="col-sm-12">
                             <label>
                                 <select name="month" class="form-control display-inline-block">
-                                    <option value="1" selected="">January</option>
+                                    <option value="1">January</option>
                                     <option value="2">February</option>
                                     <option value="3">March</option>
                                     <option value="4">April</option>
@@ -133,11 +133,13 @@
                                     <option value="10">October</option>
                                     <option value="11">November</option>
                                     <option value="12">December</option>
+                                    <option value="-" selected="">-</option>
+
                                 </select>
                             </label>
                             <label>
                                 <select name="day" class="form-control display-inline-block">
-                                    <option value="1" selected="">1</option>
+                                    <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -168,12 +170,14 @@
                                     <option value="29">29</option>
                                     <option value="30">30</option>
                                     <option value="31">31</option>
+                                    <option value="-"selected="">-</option>
                                 </select>
                             </label>
                             <label>
                                 <select name="year" class="form-control display-inline-block">
-                                    <option value="2018" selected="">2018</option>
+                                    <option value="2018">2018</option>
                                     <option value="2019">2019</option>
+                                    <option value="-"selected="">-</option>
                                 </select>
                             </label>
                         </div>

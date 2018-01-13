@@ -177,23 +177,23 @@ class ListingDAO extends BasicDAO
             OR
             plz = :plz OR
             upper(city) = :city OR
-            upper(canton) = :canton OR
+            canton = :canton OR
             numberofrooms = :numberofrooms OR
             price = :price OR
             squaremeters = :squaremeters OR
-            moveindate = :moveindate');
+            moveindate = :moveindate OR
+            upper(street) = :street');
 
         $stmt->bindValue(':street', strtoupper($listing->getStreet()));
         $stmt->bindValue(':plz', strtoupper(intval($listing->getPlz())));
         $stmt->bindValue(':city', strtoupper($listing->getCity()));
-        $stmt->bindValue(':canton', strtoupper($listing->getCanton()));
+        $stmt->bindValue(':canton', $listing->getCanton());
         $stmt->bindValue(':numberofrooms', floatval($listing->getNumberofrooms()));
         $stmt->bindValue(':price', floatval($listing->getPrice()));
         $stmt->bindValue(':squaremeters', floatval($listing->getSquaremeters()));
-        $stmt->bindValue(':moveindate', strtoupper($listing->getMoveindate()));
+        $stmt->bindValue(':moveindate', ($listing->getMoveindate()));
         $stmt->execute();
 
-        $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_CLASS, "domain\Listing");
     }
 }
