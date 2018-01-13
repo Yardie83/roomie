@@ -29,7 +29,7 @@ $user = AuthServiceImpl::getInstance()->readUser();
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/editProfile">Edit Profile</a></li>
                             <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/listing/create">Create Ad</a></li>
-                            <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/agent">My Ads</a></li>
+                            <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/user">My Ads</a></li>
                             <li role="presentation"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/logout">Logout </a></li>
                         </ul>
                     </li>
