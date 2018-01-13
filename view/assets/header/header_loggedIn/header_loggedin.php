@@ -35,7 +35,7 @@ $user = AuthServiceImpl::getInstance()->readUser();
                     </li>
                 </ul>
                 <ul class="nav navbar-nav" style="height:66px;">
-                    <li role="presentation" style="height:60px;margin:5px 5px;"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/search" style="margin:15px;padding: 17px 15px 17px 15px;">Search </a></li>
+                    <li role="presentation" style="margin:5px 5px;height:60px;"><a href="<?php echo $GLOBALS["ROOT_URL"]; ?>/search" style="padding-top:17px;">Search </a></li>
                 </ul>
             </div>
         </div>
