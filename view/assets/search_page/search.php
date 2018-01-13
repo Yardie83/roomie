@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="plz">
+                        <input class="form-control" type="text" name="plz">
                     </label>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="squareMeters">
+                        <input class="form-control" type="text" name="squareMeters">
                     </label>
                 </div>
             </div>
