@@ -24,6 +24,7 @@ class Config
             self::$config["email"]["sendgrid-apikey"] = $data["email"]["sendgrid-apikey"];
             self::$config["pdf"]["hypdf-user"] = $data["pdf"]["hypdf-user"];
             self::$config["pdf"]["hypdf-password"] = $data["pdf"]["hypdf-password"];
+
         } else {
             if (isset($_ENV["DATABASE_URL"])) {
                 $dbopts = parse_url(getenv('DATABASE_URL'));
