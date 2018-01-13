@@ -77,6 +77,16 @@ $listing = $this->listing[0];
             </div>
         </div>
     </div>
+
+    <div class="map-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Location </h2></div>
+        </div>
+        <iframe allowfullscreen="" frameborder="0" width="100%" height="450"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&amp;q=<?php echo $listing->getStreet() . "+" . $listing->getCity() ?>+Switzerland&amp;zoom=15"></iframe>
+    </div>
+
     <div class="photo-gallery">
         <div class="container">
             <div class="intro"></div>
@@ -95,13 +105,5 @@ $listing = $this->listing[0];
                 </div>
             </div>
         </div>
-    </div>
-    <div class="map-clean">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Location </h2></div>
-        </div>
-        <iframe allowfullscreen="" frameborder="0" width="100%" height="450"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCc6umJix_atnmSnjG4S5S6rj4WP492C3Y&amp;q=<?php echo $listing->getStreet() . "+" . $listing->getCity() ?>+Switzerland&amp;zoom=15"></iframe>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
