@@ -3,7 +3,7 @@
 
 <div class="register-photo" style="background-color:rgb(252,253,254);">
     <div class="form-container">
-        <form action="<?php echo $GLOBALS["ROOT_URL"]; ?>/password/reset" method="post">
+        <form action="<?php echo $GLOBALS["ROOT_URL"]; ?>/password/request" method="post">
             <h2 class="text-center">Request a new password</h2>
             <div class="form-group">
                 <div class="row">

@@ -30,16 +30,16 @@ class AgentPasswordResetController
     
     public static function reset(){
         if(AuthServiceImpl::getInstance()->validateToken($_POST["token"])){
-            $agent = AuthServiceImpl::getInstance()->readUser();
-            $agent->setPassword($_POST["password"]);
-            $agentValidator = new UserValidator($agent);
-            if($agentValidator->isValid()){
-                if(AuthServiceImpl::getInstance()->editUser($agent->getName(),$agent->getEmail(), $agent->getPassword())){
+            $user = AuthServiceImpl::getInstance()->readUser();
+            $user->setPassword($_POST["password"]);
+            $userValidator = new UserValidator($user);
+            if($userValidator->isValid()){
+                if(AuthServiceImpl::getInstance()->editUser($user->getName(),$user->getEmail(), $user->getPassword())){
                     return true;
                 }
             }
-            $agent->setPassword("");
-            $resetView = new TemplateView("agentPasswordReset.php");
+            $user->setPassword("");
+            $resetView = new TemplateView("view/assets/resetPassword/resetPassword.php");
             $resetView->token = $_POST["token"];
             echo $resetView->render();
             return false;
