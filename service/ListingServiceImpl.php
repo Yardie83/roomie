@@ -108,6 +108,7 @@ class ListingServiceImpl implements ListingService
 
     /**
      * @access public
+     * @param Listing $listing
      * @return Listing[]
      * @ReturnType Listing[]
      */
