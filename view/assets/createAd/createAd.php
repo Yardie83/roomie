@@ -46,11 +46,13 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                 <input class="form-control" type="hidden" readonly="" name="userID"
                        value="<?php echo AuthServiceImpl::getInstance()->getCurrentUserId(); ?>">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label" style="margin-left: 10px; margin-top: 10px;">Street <?php echo TemplateView::noHTML($listing->getStreet()) ?></label>
+                    <label class="control-label"
+                           style="margin-left: 10px; margin-top: 10px;">Street</label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="text" required="" name="street" style="margin-top: 10px; font-weight: normal"
+                        <input class="form-control" type="text" required="" name="street"
+                               style="margin-top: 10px; font-weight: normal"
                                value="<?php echo TemplateView::noHTML($listing->getStreet()) ?>">
                     </label>
                 </div>
@@ -176,7 +178,8 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                             <label>
                                 <select name="moveInDay" class="form-control display-inline-block" required="">
 
-                                    <?php echo '<option value="1" selected="">' ?><?php echo date("d") . '</option>' ?>
+                                    <?php echo '<option value="1" selected="">' ?>
+                                    <?php echo !is_null($listing->getMoveindate()) ? intval($listing->getDay($listing->getMoveindate())) : date("d") . '</option>';?>
 
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -214,7 +217,8 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                             <label>
                                 <select name="moveInMonth" class="form-control display-inline-block" required="">
 
-                                    <?php echo '<option value="1" selected="">' ?><?php echo date("F") . '</option>' ?>
+                                    <?php echo '<option value="1" selected="">' ?>
+                                    <?php echo !is_null($listing->getMoveindate()) ? date("F", $listing->getMonth($listing->getMoveindate())) : date("F") . '</option>';?>
 
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -232,7 +236,11 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                             </label>
                             <label>
                                 <select name="moveInYear" class="form-control display-inline-block" required="">
-                                    <option value="2018" selected="">2018</option>
+
+                                    <?php echo '<option value="" selected="">' ?>
+                                    <?php echo !is_null($listing->getMoveindate()) ? $listing->getYear($listing->getMoveindate()) : date("Y") . '</option>';?>
+
+                                    <option value="2018">2018</option>
                                     <option value="2019">2019</option>
                                 </select>
                             </label>
@@ -250,7 +258,11 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
 
                             <label>
                                 <select name="moveOutDay" class="form-control display-inline-block" required="">
-                                    <option value="1" selected="">1</option>
+
+                                    <?php echo '<option value="1" selected="">' ?>
+                                    <?php echo !is_null($listing->getMoveoutdate()) ? intval($listing->getDay($listing->getMoveoutdate())) : "-" . '</option>';?>
+
+                                    <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -281,11 +293,14 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                                     <option value="29">29</option>
                                     <option value="30">30</option>
                                     <option value="31">31</option>
-                                    <option value="-" selected="">-</option>
+                                    <option value="-">-</option>
                                 </select>
                             </label>
                             <label>
                                 <select name="moveOutMonth" class="form-control display-inline-block" required="">
+
+                                    <?php echo '<option value="1" selected="">' ?>
+                                    <?php echo !is_null($listing->getMoveoutdate()) ? date("F", $listing->getMonth($listing->getMoveoutdate())) : "-" . '</option>';?>
 
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -299,16 +314,20 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                                     <option value="10">October</option>
                                     <option value="11">November</option>
                                     <option value="12">December</option>
-                                    <option value="-" selected="">-</option>
+                                    <option value="-">-</option>
                                 </select>
                             </label>
                             <label>
                                 <select name="moveOutYear" class="form-control display-inline-block" required="">
-                                    <option value="2018" selected="">2018</option>
+
+                                    <?php echo '<option value="'?><?php echo date("Y") . '"' . ' selected="">'?>
+                                    <?php echo !is_null($listing->getMoveoutdate()) ? $listing->getYear($listing->getMoveoutdate()) : "-" . '</option>';?>
+
+                                    <option value="2018">2018</option>
                                     <option value="2019">2019</option>
                                     <option value="2020">2020</option>
                                     <option value="2021">2021</option>
-                                    <option value="-" selected="">-</option>
+                                    <option value="-">-</option>
                                 </select>
                             </label>
                         </div>
@@ -316,7 +335,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                 </div>
             </div>
             <button class="btn btn-primary submit-button" onclick="checkEntry(document.getElementById('plz').innerHTML"
-                    type="submit" style="margin-left: 10px; margin-bottom: 10px;">Search
+                    type="submit" style="margin-left: 10px; margin-bottom: 10px;">Save
             </button>
         </form>
     </div>

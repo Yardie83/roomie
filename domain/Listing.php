@@ -284,5 +284,25 @@ class Listing
         $this->image3 = $image3;
     }
 
+    // 0 --> year
+    // 1 --> month
+    // 2 --> day
+    public function getSplit($index, $flag){
 
+        $date = explode("-", $flag);
+
+        return $date[$index];
+    }
+
+    public function getYear($flag){
+        return $this->getSplit(0, $flag);
+    }
+
+    public function getMonth($flag){
+        return $this->getSplit(1, $flag);
+    }
+
+    public function getDay($flag){
+        return $this->getSplit(2, $flag);
+    }
 }
