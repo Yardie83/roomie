@@ -22,6 +22,8 @@ class ListingDAO extends BasicDAO
      */
     public function create(Listing $listing) {
 
+
+
         $stmt = $this->pdoInstance->prepare('
             INSERT INTO "listingApartment" ("userID", street, plz, city, canton, numberofrooms, price, squaremeters, publisheddate, moveindate, moveoutdate, description, image1, image2, image3)
            VALUES (:userID, :street, :plz, :city, :canton, :numberofrooms, :price, :squaremeters, :publisheddate, :moveindate, :moveoutdate, :description, :image1, :image2, :image3)');

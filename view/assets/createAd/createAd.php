@@ -84,10 +84,45 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                     <label class="control-label">Canton </label>
                 </div>
                 <div class="col-sm-6 input-column">
+                    <!--                    <label>-->
+                    <!--                        <input class="form-control" type="text" required="" name="canton"-->
+                    <!--                               value="-->
+                    <?php //echo TemplateView::noHTML($listing->getCanton()) ?><!--">-->
+                    <!--                    </label>-->
+
                     <label>
-                        <input class="form-control" type="text" required="" name="canton"
-                               value="<?php echo TemplateView::noHTML($listing->getCanton()) ?>">
+                        <select name="canton" class="form-control display-inline-block" required="">
+
+                            <option value="Aargau" selected="">Aargau</option>
+                            <option value="Appenzell Ausserrhoden">Appenzell Ausserrhoden</option>
+                            <option value="Appenzell Innerrhoden">Appenzell Innerrhoden</option>
+                            <option value="Basel-Landschaft">Basel-Landschaft</option>
+                            <option value="Basel-Stadt">Basel-Stadt</option>
+                            <option value="Bern">Bern</option>
+                            <option value="Freiburg">Freiburg</option>
+                            <option value="Genf">Genf</option>
+                            <option value="Glarus">Glarus</option>
+                            <option value="Graubünden">Graubünden</option>
+                            <option value="Jura">Jura</option>
+                            <option value="Luzern">Luzern</option>
+                            <option value="Neuenburg">Neuenburg</option>
+                            <option value="Nidwalden">Nidwalden</option>
+                            <option value="Obwalden">Obwalden</option>
+                            <option value="Schaffhausen">Schaffhausen</option>
+                            <option value="Schwyz">Schwyz</option>
+                            <option value="Solothurn">Solothurn</option>
+                            <option value="St. Gallen">St. Gallen</option>
+                            <option value="Tessin">Tessin</option>
+                            <option value="Thurgau">Thurgau</option>
+                            <option value="Uri">Uri</option>
+                            <option value="Waadt">Waadt</option>
+                            <option value="Wallis">Wallis</option>
+                            <option value="Zug">Zug</option>
+                            <option value="Zürich">Zürich</option>
+                        </select>
                     </label>
+
+
                 </div>
             </div>
             <div class="form-group">
@@ -282,7 +317,9 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary submit-button" onclick="checkEntry(document.getElementById('plz').innerHTML" type="submit">Save</button>
+            <button class="btn btn-primary submit-button" onclick="checkEntry(document.getElementById('plz').innerHTML"
+                    type="submit">Save
+            </button>
         </form>
     </div>
 </div>
