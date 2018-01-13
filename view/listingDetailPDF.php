@@ -14,7 +14,7 @@ use view\TemplateView;
 <table style="height: 237px; border-color: #f4476b; border-collapse: collapse; width: 463.5px; margin-left: auto; margin-right: auto; font-size: 20px;" border="1">
     <tbody>
     <tr style="height: 30px; font-family: Helvetica;">
-        <td style="width: 186px; padding-left: 10px; font-family: Helvetica;">Street</td>
+        <td style="width: 186px; padding-left: 10px; font-family: Helvetica;">Street name</td>
         <td style="width: 274.5px; padding-left: 10px; font-family: Helvetica;">&nbsp;</td>
     </tr>
     <tr style="height: 30px;">
