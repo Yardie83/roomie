@@ -6,16 +6,12 @@ use controller\HomepageController;
 use controller\ListingController;
 use controller\RegisterController;
 use router\Router;
-use controller\CustomerController;
-use controller\AgentController;
 use controller\AuthController;
 use controller\ErrorController;
 use controller\UserPasswordResetController;
-use controller\EmailController;
 use controller\PDFController;
 use controller\SearchController;
 use controller\UserController;
-use service\ServiceEndpoint;
 use http\HTTPException;
 use http\HTTPHeader;
 use http\HTTPStatusCode;
@@ -87,7 +83,7 @@ Router::route("GET", "/logout", function () {
 });
 
 
-// Password request path
+// Password Request and Reset
 Router::route("GET", "/password/request", function () {
     UserPasswordResetController::requestView();
 });
@@ -101,8 +97,6 @@ Router::route("GET", "/checkMail", function () {
     UserPasswordResetController::checkEmailView();
 });
 
-
-// Password reset path
 Router::route("POST", "/password/reset", function () {
     UserPasswordResetController::reset();
     Router::redirect("/login");
@@ -116,15 +110,6 @@ Router::route("GET", "/password/reset", function () {
 // user paths
 Router::route_auth("GET", '/user', $authFunction, function () {
     ListingController::readAll();
-});
-
-Router::route_auth("GET", "/user/edit", $authFunction, function () {
-    AgentController::editView();
-});
-
-Router::route_auth("POST", "/user/edit", $authFunction, function () {
-    if (AgentController::update())
-        Router::redirect("/logout");
 });
 
 // Listing CRUD & Email
@@ -149,11 +134,6 @@ Router::route_auth("GET", "/listing/delete", $authFunction, function () {
 Router::route_auth("POST", "/listing/update", $authFunction, function () {
     if (ListingController::update())
         Router::redirect("/user");
-});
-
-Router::route_auth("GET", "/listing/email", $authFunction, function () {
-    EmailController::sendMeMyCustomers();
-    Router::redirect("/");
 });
 
 Router::route("GET", "/pdf/{id}", function ($id) {

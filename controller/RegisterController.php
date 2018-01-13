@@ -65,10 +65,6 @@ class RegisterController
         return false;
     }
 
-    public static function loginView(){
-        echo (new TemplateView("agentLogin.php"))->render();
-    }
-
 
 
 }

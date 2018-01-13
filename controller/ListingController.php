@@ -92,4 +92,8 @@ class ListingController
         $id = $_GET["id"];
         (new ListingServiceImpl())->deleteListing($id);
     }
+
+    public static function editView()
+    {
+    }
 }
