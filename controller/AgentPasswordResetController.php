@@ -18,9 +18,9 @@ class AgentPasswordResetController
 {
 
     public static function resetView(){
-        $resetView = new TemplateView("agentPasswordReset.php");
+        $resetView = new TemplateView("view/assets/resetPassword/resetPassword.php");
         $resetView->token = $_GET["token"];
-        echo $resetView->render();
+        LayoutRendering::basicLayout($resetView);
     }
     
     public static function requestView(){
@@ -34,14 +34,14 @@ class AgentPasswordResetController
             $user->setPassword($_POST["password"]);
             $userValidator = new UserValidator($user);
             if($userValidator->isValid()){
-                if(AuthServiceImpl::getInstance()->editUser($user->getName(),$user->getEmail(), $user->getPassword())){
+                if(AuthServiceImpl::getInstance()->editUser($user)){
                     return true;
                 }
             }
             $user->setPassword("");
             $resetView = new TemplateView("view/assets/resetPassword/resetPassword.php");
             $resetView->token = $_POST["token"];
-            echo $resetView->render();
+            LayoutRendering::basicLayout($resetView);
             return false;
         }
         return false;
