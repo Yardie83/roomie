@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andreas.martin
- * Date: 12.09.2017
- * Time: 21:30
- */
+
 require_once("config/Autoloader.php");
 
 use controller\HomepageController;
@@ -60,7 +55,7 @@ Router::route("GET", "/login", function () {
 
 Router::route("POST", "/login", function () {
     AuthController::login();
-    Router::redirect("/agent");
+    Router::redirect("/user");
 });
 
 
@@ -72,7 +67,7 @@ Router::route("GET", "/register", function () {
 Router::route("POST", "/register", function () {
     if (RegisterController::register()){
         AuthController::login();
-        Router::redirect("/agent");
+        Router::redirect("/user");
     }
 });
 
@@ -82,7 +77,7 @@ Router::route_auth("GET", "/editProfile", $authFunction, function () {
 
 Router::route_auth("POST", "/editProfile", $authFunction, function () {
     if (RegisterController::update())
-        Router::redirect("/agent");
+        Router::redirect("/user");
 });
 
 
@@ -121,16 +116,16 @@ Router::route("GET", "/password/reset", function () {
 });
 
 
-// Agent paths
-Router::route_auth("GET", "/agent", $authFunction, function () {
+// user paths
+Router::route_auth("GET", '/user', $authFunction, function () {
     ListingController::readAll();
 });
 
-Router::route_auth("GET", "/agent/edit", $authFunction, function () {
+Router::route_auth("GET", "/user/edit", $authFunction, function () {
     AgentController::editView();
 });
 
-Router::route_auth("POST", "/agent/edit", $authFunction, function () {
+Router::route_auth("POST", "/user/edit", $authFunction, function () {
     if (AgentController::update())
         Router::redirect("/logout");
 });
@@ -146,45 +141,20 @@ Router::route_auth("GET", "/listing/edit", $authFunction, function () {
 
 Router::route_auth("POST", "/listing/edit", $authFunction, function () {
     if (ListingController::update())
-        Router::redirect("/agent");
+        Router::redirect("/user");
 });
 
 Router::route_auth("GET", "/listing/delete", $authFunction, function () {
     ListingController::delete();
-    Router::redirect("/agent");
+    Router::redirect("/user");
 });
 
 Router::route_auth("POST", "/listing/update", $authFunction, function () {
     if (ListingController::update())
-        Router::redirect("/agent");
+        Router::redirect("/user");
 });
 
 Router::route_auth("GET", "/listing/email", $authFunction, function () {
-    EmailController::sendMeMyCustomers();
-    Router::redirect("/");
-});
-
-
-// Customer paths
-Router::route_auth("GET", "/customer/create", $authFunction, function () {
-    CustomerController::create();
-});
-
-Router::route_auth("GET", "/customer/edit", $authFunction, function () {
-    CustomerController::edit();
-});
-
-Router::route_auth("GET", "/customer/delete", $authFunction, function () {
-    CustomerController::delete();
-    Router::redirect("/");
-});
-
-Router::route_auth("POST", "/customer/update", $authFunction, function () {
-    if (CustomerController::update())
-        Router::redirect("/");
-});
-
-Router::route_auth("GET", "/customer/email", $authFunction, function () {
     EmailController::sendMeMyCustomers();
     Router::redirect("/");
 });
