@@ -3,10 +3,10 @@ use view\TemplateView;
 
 ?>
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="view/assets/404page/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/assets/404page/assets/fonts/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="view/assets/404page/assets/css/styles.css">
 </head>
 
 <body>
