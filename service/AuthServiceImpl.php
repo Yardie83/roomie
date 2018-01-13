@@ -218,7 +218,7 @@ class AuthServiceImpl implements AuthService
             $timestamp = (new \DateTime('now'))->modify('+30 days');
         } elseif (isset($email)) {
             $token->setType(self::RESET_TOKEN);
-            $token->setAgentid((new AgentDAO())->findByEmail($email)->getId());
+            $token->setAgentid((new UserDAO())->findByEmail($email)->getId());
             $timestamp = (new \DateTime('now'))->modify('+1 hour');
         } else {
             throw new HTTPException(HTTPStatusCode::HTTP_406_NOT_ACCEPTABLE, 'RESET_TOKEN without email');
