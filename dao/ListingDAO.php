@@ -37,7 +37,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':squaremeters', $listing->getSquaremeters());
         $stmt->bindValue(':publisheddate', date("Y-m-d"));
         $stmt->bindValue(':moveindate', $listing->getMoveindate());
-        $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
+        $stmt->bindValue(':moveoutdate', $listing->getMoveoutdate());
         $stmt->bindValue(':description', $listing->getDescription());
         $stmt->bindValue(':image1', $listing->getImage1());
         $stmt->bindValue(':image2', $listing->getImage2());
@@ -102,7 +102,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':squaremeters', $listing->getSquaremeters());
         $stmt->bindValue(':publisheddate', $listing->getPublishedDate());
         $stmt->bindValue(':moveindate', $listing->getMoveindate());
-        $stmt->bindValue(':moveoutdate', $listing->getMoveOutDate());
+        $stmt->bindValue(':moveoutdate', $listing->getMoveoutdate());
         $stmt->bindValue(':description', $listing->getDescription());
         $stmt->bindValue(':image1', $listing->getImage1());
         $stmt->bindValue(':image2', $listing->getImage2());
@@ -180,9 +180,7 @@ class ListingDAO extends BasicDAO
             numberofrooms = :numberofrooms OR
             price = :price OR
             squaremeters = :squaremeters OR
-            publisheddate = :publisheddate OR
-            moveindate = :moveindate OR 
-            moveoutdate = :moveoutdate');
+            moveindate = :moveindate');
 
         $stmt->bindValue(':street', strtoupper($listing->getStreet()));
         $stmt->bindValue(':plz', strtoupper(intval($listing->getPlz())));
@@ -191,9 +189,7 @@ class ListingDAO extends BasicDAO
         $stmt->bindValue(':numberofrooms', floatval($listing->getNumberofrooms()));
         $stmt->bindValue(':price', floatval($listing->getPrice()));
         $stmt->bindValue(':squaremeters', floatval($listing->getSquaremeters()));
-        $stmt->bindValue(':publisheddate', strtoupper($listing->getPublishedDate()));
         $stmt->bindValue(':moveindate', strtoupper($listing->getMoveindate()));
-        $stmt->bindValue(':moveoutdate', strtoupper($listing->getMoveOutDate()));
         $stmt->execute();
 
         $stmt->execute();

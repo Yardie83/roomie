@@ -22,7 +22,7 @@ class Listing
     protected $squaremeters;
     protected $publishedDate;
     protected $moveindate;
-    protected $moveOutDate;
+    protected $moveoutdate;
     protected $description;
     protected $image1;
     protected $image2;
@@ -207,17 +207,17 @@ class Listing
     /**
      * @return mixed
      */
-    public function getMoveOutDate()
+    public function getMoveoutdate()
     {
-        return $this->moveOutDate;
+        return $this->moveoutdate;
     }
 
     /**
-     * @param mixed $moveOutDate
+     * @param mixed $moveoutdate
      */
-    public function setMoveOutDate($moveOutDate)
+    public function setMoveoutdate($moveoutdate)
     {
-        $this->moveOutDate = $moveOutDate;
+        $this->moveoutdate = $moveoutdate;
     }
 
     /**

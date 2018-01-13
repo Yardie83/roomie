@@ -68,7 +68,7 @@ class ListingController
         $moveOutYear = ($_POST["moveOutYear"]);
 
         if(!($moveOutDay == "-" || $moveOutMonth == "-" || $moveOutYear == "-")){
-            $listing->setMoveOutDate($moveOutYear . "-" . $moveOutMonth . "-" . $moveOutDay);
+            $listing->setMoveoutdate($moveOutYear . "-" . $moveOutMonth . "-" . $moveOutDay);
         }
 
         $listingValidator = new ListingValidator($listing);
