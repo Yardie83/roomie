@@ -32,16 +32,12 @@ class SearchController
         $listing->setSquaremeters($_POST["squareMeters"]);
         $listing->setPublishedDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
         $listing->setMoveindate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
-        $listing->setMoveOutDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+        $listing->setMoveoutdate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
 
         $contentView = new TemplateView("view/assets/landing/landing.php");
         $contentView->listings = (new ListingServiceImpl())->filterListings($listing);
         $contentView->result = true;
         LayoutRendering::basicLayout($contentView );
-    }
-
-    public static function readNew(){
-
     }
 
     public static function getListingById($id)
