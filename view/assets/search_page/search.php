@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="plz">
+                        <input class="form-control" type="text" name="plz">
                     </label>
                 </div>
             </div>
@@ -80,11 +80,6 @@
                             <option value="Zürich">Zürich</option>
                         </select>
                     </label>
-
-
-<!--                    <label>-->
-<!--                        <input class="form-control" type="text" name="canton">-->
-<!--                    </label>-->
                 </div>
             </div>
             <div class="form-group">
@@ -93,7 +88,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="rooms">
+                        <input class="form-control" type="text" name="rooms">
                     </label>
                 </div>
             </div>
@@ -103,7 +98,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="price">
+                        <input class="form-control" type="text" name="price">
                     </label>
                 </div>
             </div>
@@ -113,7 +108,7 @@
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="number" name="squareMeters">
+                        <input class="form-control" type="text" name="squareMeters">
                     </label>
                 </div>
             </div>
