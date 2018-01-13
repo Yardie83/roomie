@@ -46,18 +46,18 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                 <input class="form-control" type="hidden" readonly="" name="userID"
                        value="<?php echo AuthServiceImpl::getInstance()->getCurrentUserId(); ?>">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Street <?php echo TemplateView::noHTML($listing->getStreet()) ?></label>
+                    <label class="control-label" style="margin-left: 10px; margin-top: 10px;">Street <?php echo TemplateView::noHTML($listing->getStreet()) ?></label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
-                        <input class="form-control" type="text" required="" name="street"
+                        <input class="form-control" type="text" required="" name="street" style="margin-top: 10px; font-weight: normal"
                                value="<?php echo TemplateView::noHTML($listing->getStreet()) ?>">
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Postal Code</label>
+                    <label class="control-label" style="margin-left: 10px;">Postal Code</label>
                 </div>
                 <div class="col-sm-6 col-md-6 input-column">
                     <label>
@@ -68,7 +68,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">City </label>
+                    <label class="control-label" style="margin-left: 10px;">City </label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
@@ -79,7 +79,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Canton </label>
+                    <label class="control-label" style="margin-left: 10px;">Canton </label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <!--                    <label>-->
@@ -125,7 +125,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">No. of Rooms</label>
+                    <label class="control-label" style="margin-left: 10px;">No. of Rooms</label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
@@ -136,7 +136,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Monthly Rent</label>
+                    <label class="control-label" style="margin-left: 10px;">Monthly Rent</label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
@@ -147,7 +147,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Square meter</label>
+                    <label class="control-label" style="margin-left: 10px;">Square meter</label>
                 </div>
                 <div class="col-sm-6 input-column">
                     <label>
@@ -158,7 +158,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Description </label>
+                    <label class="control-label" style="margin-left: 10px;">Description </label>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 input-column">
                     <textarea rows="4" class="form-control" name="description"
@@ -167,7 +167,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Available from</label>
+                    <label class="control-label" style="margin-left: 10px;">Available from</label>
                 </div>
                 <div class="col-md-8 col-sm-6 input-column">
                     <div class="row">
@@ -242,7 +242,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
             </div>
             <div class="form-group">
                 <div class="col-sm-4 label-column">
-                    <label class="control-label">Available until</label>
+                    <label class="control-label" style="margin-left: 10px;">Available until</label>
                 </div>
                 <div class="col-md-8 col-sm-6 input-column">
                     <div class="row">
@@ -316,7 +316,7 @@ isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $
                 </div>
             </div>
             <button class="btn btn-primary submit-button" onclick="checkEntry(document.getElementById('plz').innerHTML"
-                    type="submit">Save
+                    type="submit" style="margin-left: 10px; margin-bottom: 10px;">Search
             </button>
         </form>
     </div>
