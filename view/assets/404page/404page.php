@@ -24,7 +24,7 @@ use view\TemplateView;
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="text-center" style="font-size:17px;color:rgb(244,71,107);">Would you go back to our <a href="#" style="color:rgb(51,51,51);">homepage </a>instead?</p>
+                    <p class="text-center" style="font-size:17px;color:rgb(244,71,107);">Would you go back to our <a href="<?php echo $GLOBALS["ROOT_URL"]; ?>" style="color:rgb(51,51,51);">homepage </a>instead?</p>
                 </div>
             </div>
         </div>

@@ -9,11 +9,9 @@
 use domain\Listing;
 use service\AuthServiceImpl;
 use view\TemplateView;
-use validator\CustomerValidator;
 use validator\ListingValidator;
 
 isset($this->listing) ? $listing = $this->listing : $listing = new Listing();
-//isset($this->customerValidator) ? $customerValidator = $this->customerValidator : $customerValidator = new CustomerValidator();
 isset($this->listingValidator) ? $listingValidator = $this->listingValidator : $listingValidator = new ListingValidator();
 
 ?>
