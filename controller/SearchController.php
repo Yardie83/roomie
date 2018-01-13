@@ -31,7 +31,7 @@ class SearchController
         $listing->setPrice($_POST["price"]);
         $listing->setSquaremeters($_POST["squareMeters"]);
         $listing->setPublishedDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
-        $listing->setMoveInDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
+        $listing->setMoveindate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
         $listing->setMoveOutDate(($_POST["year"]."-".$_POST["month"]."-".$_POST["day"]));
 
         $contentView = new TemplateView("view/assets/landing/landing.php");

@@ -21,7 +21,7 @@ class Listing
     protected $price;
     protected $squaremeters;
     protected $publishedDate;
-    protected $moveInDate;
+    protected $moveindate;
     protected $moveOutDate;
     protected $description;
     protected $image1;
@@ -191,17 +191,17 @@ class Listing
     /**
      * @return mixed
      */
-    public function getMoveInDate()
+    public function getMoveindate()
     {
-        return $this->moveInDate;
+        return $this->moveindate;
     }
 
     /**
-     * @param mixed $moveInDate
+     * @param mixed $moveindate
      */
-    public function setMoveInDate($moveInDate)
+    public function setMoveindate($moveindate)
     {
-        $this->moveInDate = $moveInDate;
+        $this->moveindate = $moveindate;
     }
 
     /**

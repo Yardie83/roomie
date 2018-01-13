@@ -61,7 +61,7 @@ class ListingController
         $moveInDay = ($_POST["moveInDay"]);
         $moveInMonth = ($_POST["moveInMonth"]);
         $moveInYear = ($_POST["moveInYear"]);
-        $listing->setMoveInDate($moveInYear . "-" . $moveInMonth . "-" . $moveInDay);
+        $listing->setMoveindate($moveInYear . "-" . $moveInMonth . "-" . $moveInDay);
 
         $moveOutDay = ($_POST["moveOutDay"]);
         $moveOutMonth = ($_POST["moveOutMonth"]);
