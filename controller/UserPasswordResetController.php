@@ -14,7 +14,7 @@ use view\TemplateView;
 use validator\UserValidator;
 use service\EmailServiceClient;
 
-class AgentPasswordResetController
+class UserPasswordResetController
 {
 
     public static function resetView(){

@@ -10,7 +10,7 @@ use controller\CustomerController;
 use controller\AgentController;
 use controller\AuthController;
 use controller\ErrorController;
-use controller\AgentPasswordResetController;
+use controller\UserPasswordResetController;
 use controller\EmailController;
 use controller\PDFController;
 use controller\SearchController;
@@ -92,27 +92,27 @@ Router::route("GET", "/logout", function () {
 
 // Password request path
 Router::route("GET", "/password/request", function () {
-    AgentPasswordResetController::requestView();
+    UserPasswordResetController::requestView();
 });
 
 Router::route("POST", "/password/request", function () {
-    AgentPasswordResetController::resetEmail();
+    UserPasswordResetController::resetEmail();
     Router::redirect("/checkMail");
 });
 
 Router::route("GET", "/checkMail", function () {
-    AgentPasswordResetController::checkEmailView();
+    UserPasswordResetController::checkEmailView();
 });
 
 
 // Password reset path
 Router::route("POST", "/password/reset", function () {
-    AgentPasswordResetController::reset();
+    UserPasswordResetController::reset();
     Router::redirect("/login");
 });
 
 Router::route("GET", "/password/reset", function () {
-    AgentPasswordResetController::resetView();
+    UserPasswordResetController::resetView();
 });
 
 
