@@ -18,7 +18,7 @@ class PDFController
 {
     public static function generatePDFCustomers($id){
 
-        $pdfView = new TemplateView("view/assets/detailView/details.php");
+        $pdfView = new TemplateView("listingDetailPDF.php");
         $pdfView->listing = (new ListingServiceImpl())->findListingById($id);
         //LayoutRendering::basicLayout($pdfView);
 
