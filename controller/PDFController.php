@@ -20,7 +20,7 @@ class PDFController
 
         $pdfView = new TemplateView("listingDetailPDF.php");
         $pdfView->listing = (new ListingServiceImpl())->findListingById($id);
-        //LayoutRendering::basicLayout($pdfView);
+        LayoutRendering::basicLayout($pdfView);
 
         $result = PDFServiceClient::sendPDF($pdfView->render());
         header("Content-Type: application/pdf", NULL, 200);
